@@ -84,8 +84,9 @@
     position: absolute;
     width: 2em;
     height: 2em;
-    top: -10px;
+    top: 0;
     left: 1.5vmin;
+    align-content: center;
 }
 
 .fa span {
