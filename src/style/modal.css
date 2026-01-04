@@ -24,7 +24,7 @@
    max-height: 90vh;
 
    z-index: 1000;
-   border-radius: 10px 0 0 10px;
+   /*border-radius: 10px 0 0 10px;*/
 
    opacity: 0;
    visibility: hidden;

@@ -28,10 +28,10 @@ function smoothScroll(targetEl, duration) {
 }
 
 // イベント設定
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const targetId = this.getAttribute("href");
-    smoothScroll(targetId, 600); // 600ms
+    smoothScroll(targetId, 600);
   });
 });
