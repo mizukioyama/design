@@ -572,6 +572,6 @@ form a {
       overflow: hidden;
    }
    main {
-      overflow: auto;
+      overflow-y: auto;
    }
 }
