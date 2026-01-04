@@ -566,12 +566,3 @@ form a {
       color: transparent; /* 追加：Webkit未対応時にテキストを透明に */
    }
 }
-
-@media screen and (min-width: 1300px) {
-   body {
-      overflow: hidden;
-   }
-   main {
-      overflow-y: auto;
-   }
-}
