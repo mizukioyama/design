@@ -143,12 +143,6 @@ address {
    display: none;
 }
 
-@media screen and (min-width: 1300px) {
-   body {
-   overflow: hidden;
-   }
-}
-
 body {
    margin: 0;
    padding: 0;
@@ -570,5 +564,14 @@ form a {
       background-clip: border-box; /* 追加：他のブラウザ用 */
       background-clip: text; /* 追加：他のブラウザ用 */
       color: transparent; /* 追加：Webkit未対応時にテキストを透明に */
+   }
+}
+
+@media screen and (min-width: 1300px) {
+   body {
+      overflow: hidden;
+   }
+   main {
+      overflow: auto;
    }
 }
