@@ -45,6 +45,7 @@ function cardClicked(cardIndex) {
       return;
    }
 
+   
    clickedCard = cards[cardIndex - 1];
    clickedCard.classList.add("card-clicked");
    moveCardToCenter(clickedCard, cardIndex);

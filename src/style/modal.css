@@ -15,27 +15,31 @@
 /* モーダルのスタイル */
 .modal {
    position: fixed;
-   top: 50%;
-   left: 50%;
-   padding: 10vmin;
-   height: 95vmin;
+   inset: 0;                 /* top/right/bottom/left:0 */
+   margin: auto;
+   padding: 5vh 5vw;
    width: 100%;
    max-width: 1200px;
+   height: auto;
+   max-height: 90vh;
+
    z-index: 1000;
    border-radius: 10px 0 0 10px;
+
    opacity: 0;
    visibility: hidden;
    overflow-y: auto;
-   -webkit-backdrop-filter: blur(8px);
+
    backdrop-filter: blur(8px);
-   background-color: rgba(200, 200,200, 0.15);
    background:
-   linear-gradient(to top, rgba(0, 0, 0, 0.15) 0%, rgba(46, 46, 46, 0.25) 100%),
-   url("../assets/images/pd-body-bg.jpg");
+     linear-gradient(to top, rgba(0,0,0,.15), rgba(46,46,46,.25)),
+     url("../assets/images/pd-body-bg.jpg");
    background-size: cover;
-   transform: translate(-50%, -50%) scale(0.8);
-   box-shadow: 0 3px 13px 0px rgba(0, 0, 0, 0.95);
-   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+
+   transform: scale(0.8);
+   box-shadow: 0 3px 13px rgba(0,0,0,.95);
+
+   transition: opacity .3s ease, transform .3s ease, visibility .3s;
 }
 
 .modal p {
@@ -51,7 +55,7 @@
 .modal.show {
    opacity: 1;
    visibility: visible;
-   transform: translate(-50%, -50%) scale(1);
+   transform: scale(1);
 }
 
 .modal-overlay.show {
