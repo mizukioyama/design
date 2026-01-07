@@ -84,7 +84,8 @@
     position: absolute;
     width: 2em;
     height: 2em;
-    top: -20px;
+    /*top: -20px;*/
+    top: -22.5px;
     left: 0;
     align-content: center;
 }

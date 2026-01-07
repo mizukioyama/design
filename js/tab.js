@@ -1,5 +1,6 @@
-// スムーススクロール関数（動作確実）
-function smoothScroll(targetEl, duration) {
+function smoothScroll(targetEl, duration = 600) {
+  if (!targetEl || targetEl === '#') return;
+
   const target = document.querySelector(targetEl);
   if (!target) return;
 
@@ -7,6 +8,13 @@ function smoothScroll(targetEl, duration) {
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
   let startTime = null;
+
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  }
 
   function animation(currentTime) {
     if (startTime === null) startTime = currentTime;
@@ -16,22 +24,18 @@ function smoothScroll(targetEl, duration) {
     if (timeElapsed < duration) requestAnimationFrame(animation);
   }
 
-  // イージング（swing風）
-  function ease(t, b, c, d) {
-    t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
-    t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
-  }
-
   requestAnimationFrame(animation);
 }
 
-// イベント設定
-document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+// アコーディオン内リンクは除外
+document.querySelectorAll(
+  'a[href^="#"]:not([href="#"]):not(.accordion-header a)'
+).forEach(anchor => {
   anchor.addEventListener("click", function (e) {
-    e.preventDefault();
     const targetId = this.getAttribute("href");
-    smoothScroll(targetId, 600);
+    if (!document.querySelector(targetId)) return;
+
+    e.preventDefault();
+    smoothScroll(targetId);
   });
 });
