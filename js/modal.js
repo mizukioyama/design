@@ -1,58 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // モーダルを開く関数
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        const overlay = document.querySelector('.modal-overlay');
-
-        if (modal && overlay) {
-            modal.classList.add('show');
-            overlay.classList.add('show');
-            document.body.classList.add('modal-open');
-        }
-    }
-
-    // モーダルを閉じる関数
-    function closeModal() {
-        const modals = document.querySelectorAll('.modal');
-        const overlay = document.querySelector('.modal-overlay');
-
-        modals.forEach(function (modal) {
-            modal.classList.remove('show');
-        });
-
-        if (overlay) {
-            overlay.classList.remove('show');
-        }
-
-        document.body.classList.remove('modal-open');
-    }
-
-    // トリガーボタンにイベントリスナーを追加
-    const buttons = document.querySelectorAll('.button');
-    buttons.forEach(function (button) {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-            const modalId = button.getAttribute('data-modal');
-            openModal(modalId);
-        });
-    });
-
-    // オーバーレイと閉じるボタンで閉じる
+  function openStaticModal(modalId) {
+    const modal = document.getElementById(modalId);
     const overlay = document.querySelector('.modal-overlay');
-    if (overlay) {
-        overlay.addEventListener('click', closeModal);
-    }
 
-    const closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(function (btn) {
-        btn.addEventListener('click', closeModal);
+    if (!modal || !overlay) return;
+
+    modal.classList.add('show');
+    overlay.classList.add('show');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeStaticModal() {
+    document.querySelectorAll('.modal.show').forEach(modal => {
+      modal.classList.remove('show');
     });
 
-    // エスケープキーで閉じる
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
+    const overlay = document.querySelector('.modal-overlay');
+    if (overlay) overlay.classList.remove('show');
+
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.button').forEach(button => {
+    button.addEventListener('click', e => {
+      e.preventDefault();
+      openStaticModal(button.dataset.modal);
     });
+  });
+
+  const overlay = document.querySelector('.modal-overlay');
+  if (overlay) overlay.addEventListener('click', closeStaticModal);
+
+  document.querySelectorAll('.close').forEach(btn => {
+    btn.addEventListener('click', closeStaticModal);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeStaticModal();
+  });
 });
