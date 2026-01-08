@@ -9,7 +9,7 @@ switch (page) {
       import("./style/se_card.css");
       import("./style/card.css");
       import("./style/se-list.css");
-      //import("../js/se_card.js");
+      import("../js/se_card.js");
       import("../js/card.js");
       import("../js/se-list.js");
       break;
@@ -42,7 +42,7 @@ import "./assets/fonts/fonts.css";
 import("./style/mobile-all.css");
 import("./style/mobile-page.css");
 import("./style/tab.css");
-//import("../js/tab.js");
+import("../js/tab.js");
 
 // PC all
 import "./style/all.css";      // 全ページ共通
