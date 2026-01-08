@@ -1,0 +1,2 @@
+(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[781],{3781:()=>{let e=null,t=!1;window.addEventListener("click",(n=>{const c=document.getElementById("dynamic-modal");c&&(c.contains(n.target)||n.target.closest(".se_card")||function(){if(t)return;t=!0;const n=document.getElementById("dynamic-modal");n&&n.parentNode&&n.parentNode.removeChild(n),document.querySelectorAll(".se_card").forEach((e=>{e.style.transform="",e.style.opacity="1",e.classList.remove("card-clicked")})),e=null,t=!1}())}))}}]);
+//# sourceMappingURL=781.main.js.map
