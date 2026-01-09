@@ -6,12 +6,13 @@
 
 .card-wrapper {
    position: relative;
-   left: 5vmin;
    display: inline-block;
    cursor: pointer;
    border-radius: 8px;
    margin-top: 2vmin;
    margin-bottom: 3vmin;
+   transform: translateX(5vmin);
+   left: 0;
 
    /* そのまま */
    transition: transform 0.5s ease, z-index 0.2s ease;
@@ -43,7 +44,6 @@
    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
    transition: all 0.5s ease;
    pointer-events: none;
-   z-index: 1;
 }
 
 .card-background h5 {
