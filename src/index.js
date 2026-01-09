@@ -6,7 +6,7 @@ const page = document.body.dataset.page; // 例: <body data-page="contact"> の�
 // 各ページ固有の処理
 switch (page) {
    case "service":
-      import("./style/se_card.css");
+      //import("./style/se_card.css");
       import("./style/card.css");
       import("./style/se-list.css");
       //import("../js/se_card.js");
