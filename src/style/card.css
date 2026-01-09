@@ -11,8 +11,7 @@
    border-radius: 8px;
    margin-top: 2vmin;
    margin-bottom: 3vmin;
-   transform: translateX(5vmin);
-   left: 0;
+   margin-left: 5vmin;
 
    /* そのまま */
    transition: transform 0.5s ease, z-index 0.2s ease;
@@ -79,7 +78,6 @@
 
    /* transformはJS管理 */
    transition: opacity 0.25s ease;
-   outline: 2px solid red;
 }
 
 .card-header {

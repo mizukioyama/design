@@ -35,40 +35,35 @@ function resetCards(cardWrappers) {
     });
 }
 
-function activateCard(cardWrapper) {
-    cardWrapper.classList.add("active");
-    cardWrapper.style.zIndex = 100;
+function activateCard(wrapper) {
+    wrapper.classList.add("active");
+    wrapper.style.zIndex = 100;
 
     requestAnimationFrame(() => {
-        cardWrapper.style.transition = "transform 0.3s ease";
-        cardWrapper.style.transform = "scale(1.2)";
+        wrapper.style.transition = "transform 0.3s ease";
+        wrapper.style.transform = "scale(1.2)";
 
-        setTimeout(() => moveToCenter(cardWrapper), 300);
+        setTimeout(() => moveToCenter(wrapper), 300);
     });
 }
 
-function moveToCenter(cardWrapper) {
-    const rect = cardWrapper.getBoundingClientRect();
-    const scrollX = window.pageXOffset;
-    const scrollY = window.pageYOffset;
+function moveToCenter(wrapper) {
+    const rect = wrapper.getBoundingClientRect();
+    const translateX = window.innerWidth / 2 - rect.width / 2 - rect.left;
+    const translateY = window.innerHeight / 2 - rect.height / 2 - rect.top;
 
-    const translateX =
-        window.innerWidth / 2 - rect.width / 2 - (rect.left + scrollX);
-    const translateY =
-        window.innerHeight / 2 - rect.height / 2 - (rect.top + scrollY);
+    wrapper.style.transition = "transform 0.25s ease";
+    wrapper.style.transform =
+        `translate(${translateX}px, ${translateY}px) scale(1.2)`;
 
-    cardWrapper.style.transition = "transform 0.25s ease";
-    cardWrapper.style.transform = `translate(${translateX}px, ${translateY}px) scale(1.2)`;
-
-    setTimeout(() => expandBackground(cardWrapper), 250);
+    setTimeout(() => expandBackground(wrapper), 250);
 }
 
-function expandBackground(cardWrapper) {
-    const bg = cardWrapper.querySelector(".card-background");
+function expandBackground(wrapper) {
+    const bg = wrapper.querySelector(".card-background");
     if (!bg) return;
 
     Object.assign(bg.style, {
-        fontFamily: "sans-serif",
         top: "0",
         left: "47%",
         width: "75vmin",
