@@ -2,23 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardWrappers = document.querySelectorAll(".card-wrapper");
 
     cardWrappers.forEach((wrapper) => {
-        const card = wrapper.querySelector(".card");
-        if (!card) return;
-
-        card.addEventListener("click", (e) => {
+        wrapper.addEventListener("click", (e) => {
             e.stopPropagation();
 
             const isActive = wrapper.classList.contains("active");
-
             resetCards(cardWrappers);
 
-            if (isActive) return;
-
-            activateCard(wrapper);
+            if (!isActive) {
+                activateCard(wrapper);
+            }
         });
     });
 
-    // 背景クリックでリセット
     document.addEventListener("click", () => {
         resetCards(cardWrappers);
     });

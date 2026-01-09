@@ -79,6 +79,7 @@
 
    /* transformはJS管理 */
    transition: opacity 0.25s ease;
+   outline: 2px solid red;
 }
 
 .card-header {
