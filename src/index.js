@@ -42,7 +42,7 @@ import "./assets/fonts/fonts.css";
 import("./style/mobile-all.css");
 import("./style/mobile-page.css");
 import("./style/tab.css");
-//import("../js/tab.js");
+import("../js/tab.js");
 
 // PC all
 import "./style/all.css";      // 全ページ共通
@@ -58,7 +58,7 @@ import "./style/modal.css";    // モーダル
 import "../js/section.js"; // section
 import "../js/cursor.js"; // cursor
 import "../js/accordion.js"; // accordion
-//import "../js/chat.js"; // chat
+import "../js/chat.js"; // chat
 import "../js/fade.js"; // fade
 import "../js/head-foot.js"; // head foot
 import "../js/modal.js"; // modal

@@ -3,6 +3,8 @@
     cursor: none !important;
 }
 
+@media screen and (min-width: 1299px) {
+
 #cursor, #stalker {
     position: fixed;
     pointer-events: none;
@@ -59,4 +61,5 @@
     font-size: 2rem;
     font-weight: 500;
     color: var(--bg);
+}
 }
