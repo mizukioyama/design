@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardWrappers = document.querySelectorAll(".card-wrapper");
     const overlay = document.querySelector(".modal-overlay");
 
-    cardWrappers.forEach((wrapper) => {
-        wrapper.addEventListener("click", (e) => {
+    cardWrappers.forEach(wrapper => {
+        wrapper.addEventListener("click", e => {
             e.stopPropagation();
 
             const isActive = wrapper.classList.contains("active");
-
             resetCards(cardWrappers);
 
             if (!isActive) {
@@ -16,8 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 背景クリックでリセット
-    document.addEventListener("click", () => {
+    /* 🔑 card 外クリックのみリセット */
+    document.addEventListener("click", e => {
+        if (e.target.closest(".card-wrapper")) return;
         resetCards(cardWrappers);
         restoreOverlay(overlay);
     });
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================= */
 
 function resetCards(cardWrappers) {
-    cardWrappers.forEach((el) => {
+    cardWrappers.forEach(el => {
         el.classList.remove("active");
         el.style.transition = "";
         el.style.transform = "";
@@ -40,7 +40,6 @@ function resetCards(cardWrappers) {
 }
 
 function activateCard(wrapper, overlay) {
-    // overlay がクリックを奪わないようにする
     disableOverlay(overlay);
 
     wrapper.classList.add("active");
@@ -84,7 +83,7 @@ function expandBackground(wrapper) {
 }
 
 /* =========================
-   overlay 制御（最重要）.js
+   overlay 制御
 ========================= */
 
 function disableOverlay(overlay) {
