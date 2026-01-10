@@ -97,7 +97,7 @@
    color: var(--bt);
 
    z-index: 2;
-   pointer-events: none; /* wrapperで受ける */
+   pointer-events: auto; /* wrapperで受ける */
 
    transition: opacity 0.25s ease;
 }
