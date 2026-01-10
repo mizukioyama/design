@@ -76,7 +76,8 @@
    cursor: pointer;
 }
 
-/*==Service*/
+
+/*========Service*/
 .service .modal #wrap #container h3 span::before {
    content: "税込";
    font-size: clamp(1rem, 0.667rem + 0.44vw, 1.2rem);
@@ -84,7 +85,7 @@
    margin-right: 0.25vmin;
 }
 
-/*==Contact Policy*/
+/*========Contact Policy*/
 .contact .modal h3 {
    font-size: clamp(2rem, 1.333rem + 0.89vw, 2.4rem);
    margin-top: 3vmin;
