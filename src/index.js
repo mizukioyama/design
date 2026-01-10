@@ -8,7 +8,7 @@ switch (page) {
    case "service":
       //import("./style/se_card.css");
       import("./style/card.css");
-      import("./style/se-list.css");
+      //import("./style/se-list.css");
       //import("../js/se_card.js");
       import("../js/card.js");
       //import("../js/se-list.js");
