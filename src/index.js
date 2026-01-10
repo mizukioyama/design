@@ -3,6 +3,8 @@ console.log("Hello, Webpack!");
 // ページ判定
 const page = document.body.dataset.page; // 例: <body data-page="contact"> のように設定
 
+console.log("🔥 index.js loaded");
+
 // 各ページ固有の処理
 switch (page) {
    case "service":
