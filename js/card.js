@@ -1,21 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cardWrappers = document.querySelectorAll(".card-wrapper");
+    const overlay = document.querySelector(".modal-overlay");
 
     cardWrappers.forEach((wrapper) => {
         wrapper.addEventListener("click", (e) => {
             e.stopPropagation();
 
             const isActive = wrapper.classList.contains("active");
+
             resetCards(cardWrappers);
 
             if (!isActive) {
-                activateCard(wrapper);
+                activateCard(wrapper, overlay);
             }
         });
     });
 
+    // 背景クリックでリセット
     document.addEventListener("click", () => {
         resetCards(cardWrappers);
+        restoreOverlay(overlay);
     });
 });
 
@@ -35,7 +39,10 @@ function resetCards(cardWrappers) {
     });
 }
 
-function activateCard(wrapper) {
+function activateCard(wrapper, overlay) {
+    // overlay がクリックを奪わないようにする
+    disableOverlay(overlay);
+
     wrapper.classList.add("active");
     wrapper.style.zIndex = 100;
 
@@ -49,8 +56,11 @@ function activateCard(wrapper) {
 
 function moveToCenter(wrapper) {
     const rect = wrapper.getBoundingClientRect();
-    const translateX = window.innerWidth / 2 - rect.width / 2 - rect.left;
-    const translateY = window.innerHeight / 2 - rect.height / 2 - rect.top;
+
+    const translateX =
+        window.innerWidth / 2 - rect.width / 2 - rect.left;
+    const translateY =
+        window.innerHeight / 2 - rect.height / 2 - rect.top;
 
     wrapper.style.transition = "transform 0.25s ease";
     wrapper.style.transform =
@@ -71,4 +81,18 @@ function expandBackground(wrapper) {
         padding: "1vmin 4vmin 2vmin 22vmin",
         transition: "all 0.25s ease, height 1s ease"
     });
+}
+
+/* =========================
+   overlay 制御（最重要）.js
+========================= */
+
+function disableOverlay(overlay) {
+    if (!overlay) return;
+    overlay.style.pointerEvents = "none";
+}
+
+function restoreOverlay(overlay) {
+    if (!overlay) return;
+    overlay.style.pointerEvents = "";
 }
