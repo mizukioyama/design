@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("card.js loaded");
-
-  document.querySelectorAll(".card-wrapper").forEach(wrapper => {
-    wrapper.addEventListener("click", e => {
-      console.log("✅ card-wrapper clicked", wrapper);
-    });
-  });
-});
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".card-wrapper");
 
   cards.forEach(card => {
