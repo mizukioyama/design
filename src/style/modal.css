@@ -27,6 +27,8 @@
    z-index: 1000;
    /*border-radius: 10px 0 0 10px;*/
 
+   pointer-events: auto;
+
    opacity: 0;
    visibility: hidden;
    overflow-y: auto;
