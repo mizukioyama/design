@@ -1,3 +1,12 @@
+console.log("🔥 card.js loaded");
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM ready");
+});
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".card-wrapper");
 
