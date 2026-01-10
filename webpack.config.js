@@ -67,32 +67,37 @@ module.exports = {
       ]
    },
    plugins: [
-      //new HtmlWebpackPlugin({
-      //   template: "./src/index.html",
-      //   filename: "index.html",
-      //   meta: {
-      //      "Content-Security-Policy": {
-      //         "http-equiv": "Content-Security-Policy",
-      //         content: "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'"
-      //      }
-      //   }
-      //}),
+      new HtmlWebpackPlugin({
+         template: "./src/index.html",
+         filename: "index.html",
+         chunks: ["main"],
+         meta: {
+            "Content-Security-Policy": {
+               "http-equiv": "Content-Security-Policy",
+               content: "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'"
+            }
+         }
+      }),
       // 🔹 html を docs/ に出力
       new HtmlWebpackPlugin({
          template: "./src/about.html",
          filename: "about.html",
+         chunks: ["main"],
       }),
       new HtmlWebpackPlugin({
          template: "./src/service.html",
          filename: "service.html",
+         chunks: ["main"],
       }),
       new HtmlWebpackPlugin({
          template: "./src/contact.html",
          filename: "contact.html",
+         chunks: ["main"],
       }),
       new HtmlWebpackPlugin({
          template: "./src/policy.html",
          filename: "policy.html",
+         chunks: ["main"],
       }),
       new HtmlWebpackPlugin({
          template: "./src/matching.html",
