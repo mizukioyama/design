@@ -21,11 +21,11 @@
   margin: 2vmin 0 3vmin 5vmin;
   z-index: 1;
 }
-/*
+
 .card-wrapper.active {
   z-index: 10;
   transition: transform 0.45s ease;
-}*/
+}
 
 /* =====================
    card
@@ -43,6 +43,10 @@
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   border-radius: 8px;
   color: var(--bt);
+
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
 
   transition:
     transform 0.45s ease,
@@ -69,6 +73,8 @@
   border-radius: 8px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 
+  z-index: 3;
+
   opacity: 0;
   transform: translateX(10px) scale(0.95);
   pointer-events: none;
@@ -80,7 +86,7 @@
 
 /* =====================
    active
-===================== 
+===================== */
 
 .card-wrapper.active .card {
   transform: translateX(0) scale(0.9);
@@ -90,7 +96,7 @@
   opacity: 1;
   transform: translateX(0) scale(1.5);
   pointer-events: auto;
-}*/
+}
 
 .card-detail h5 {
   font-size: 2rem;
