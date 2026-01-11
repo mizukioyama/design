@@ -3,6 +3,11 @@
   cursor: pointer;
 }
 
+.cards {
+  display: flex;
+  gap: 4rem;
+}
+
 .card {
   width: 300px;
   height: 180px;
