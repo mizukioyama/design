@@ -63,7 +63,7 @@ import "../js/accordion.js"; // accordion
 import "../js/chat.js"; // chat
 import "../js/fade.js"; // fade
 import "../js/head-foot.js"; // head foot
-import "../js/modal.js"; // modal
+//import "../js/modal.js"; // modal
 import "../js/google.js"; // google
 
 /////////// all images
