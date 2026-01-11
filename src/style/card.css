@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 15%;
+  gap: 5rem;
 }
 
 /* =====================
@@ -19,13 +19,13 @@
   display: inline-block;
   cursor: pointer;
   margin: 2vmin 0 3vmin 5vmin;
-
-  /* ★ 追加 */
-  transition: z-index 0s;
+  z-index: 1;
 }
 
 .card-wrapper.active {
-  z-index: 10; /* ★ 前面に出す */
+  z-index: 10;
+  transform: scale(1.15);
+  transition: transform 0.45s ease;
 }
 
 /* =====================
@@ -38,9 +38,7 @@
   height: 235px;
   padding: 1.5rem 0 1rem 0;
 
-  background: url("../assets/images/mobile-main-second.png");
-  background-size: cover;
-  background-position: center;
+  background: url("../assets/images/mobile-main-second.png") center / cover;
   background-repeat: no-repeat;
 
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
@@ -51,7 +49,6 @@
   overflow: hidden;
   z-index: 2;
 
-  /* ★ transform を明示 */
   transition:
     transform 0.45s ease,
     opacity 0.25s ease;
@@ -77,7 +74,6 @@
   border-radius: 8px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 
-  /* ★ card より上 */
   z-index: 3;
 
   opacity: 0;
@@ -107,15 +103,9 @@
    active
 ===================== */
 
-.card-wrapper.active .card {
-  transform: scale(1.15);
-}
-
 .card-wrapper.active .card-detail {
   opacity: 1;
   transform: translateX(0) scale(1);
+  pointer-events: auto;
 }
 
-.card-wrapper.active .card-detail p {
-  opacity: 1;
-}
