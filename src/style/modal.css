@@ -1,68 +1,12 @@
-/* モーダルの背景 */
+/* ===== overlay ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(25,25,25,.5);
-  z-index: 999;
-
+  background: rgba(0,0,0,.5);
   opacity: 0;
   visibility: hidden;
   transition: .3s;
-  
-  /* 🔥 pointer-events は常に有効 */
-  pointer-events: none;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* モーダルのスタイル */
-.modal {
-   position: fixed;
-   inset: 0;                 /* top/right/bottom/left:0 */
-   margin: auto;
-   padding: 5vh 5vw;
-   width: 100%;
-   max-width: 1200px;
-   height: auto;
-   max-height: 90vh;
-
-   z-index: 1000;
-   /*border-radius: 10px 0 0 10px;*/
-
-   pointer-events: auto;
-
-   opacity: 0;
-   visibility: hidden;
-   overflow-y: auto;
-
-   backdrop-filter: blur(8px);
-   background:
-     linear-gradient(to top, rgba(0,0,0,.15), rgba(46,46,46,.25)),
-     url("../assets/images/pd-body-bg.jpg");
-   background-size: cover;
-
-   transform: scale(0.8);
-   box-shadow: 0 3px 13px rgba(0,0,0,.95);
-
-   transition: opacity .3s ease, transform .3s ease, visibility .3s;
-}
-
-.modal p {
-   font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
-   line-height: 2.7rem;
-   color: var(--bg);
-   margin-bottom: 2vmin;
-   text-shadow: 1px 1px 2px var(--text);
-}
-
-
-/* モーダルが表示されるとき */
-.modal.show {
-   opacity: 1;
-   visibility: visible;
-   transform: scale(1);
+  z-index: 900;
 }
 
 .modal-overlay.show {
@@ -70,16 +14,44 @@
   visibility: visible;
 }
 
-/* 閉じるボタン */
-.modal .close {
-   position: absolute;
-   top: 2rem;
-   right: 5rem;
-   background: none;
-   border: none;
-   font-size: clamp(3.8rem, 3.133rem + 0.89vw, 4.2rem);
-   cursor: pointer;
+/* ===== modal ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  max-height: 90vh;
+  padding: 4rem;
+  background: #222;
+  color: #fff;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(.9);
+  transition: .3s;
+
+  z-index: 1000;
 }
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.modal .close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
 
 
 /*========Service*/
