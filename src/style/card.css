@@ -109,6 +109,17 @@
   transition: opacity 0.6s ease 0.2s;
 }
 
+.card-content h3 {
+  font-size: clamp(2rem, 0.667rem + 1.78vw, 2.8rem);
+  font-family: sans-serif;
+  font-weight: 400;
+  width: 100%;
+  padding-left: 2rem;
+  color: transparent;
+  mix-blend-mode: plus-lighter;
+  border-bottom: 1px solid;
+}
+
 .card-footer {
   font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
   font-family: sans-serif;
