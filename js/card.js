@@ -1,32 +1,39 @@
-console.log("🟢 card.js loaded");
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.querySelector('.modal-overlay');
+  let activeModal = null;
 
-export function initCard() {
-  const cards = document.querySelectorAll(".card-wrapper");
-  if (!cards.length) {
-    console.warn("⚠️ no card-wrapper found");
-    return;
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+
+    activeModal = modal;
+    overlay.classList.add('show');
+    modal.classList.add('show');
   }
 
-  console.log("✅ card init:", cards.length);
+  function closeModal() {
+    if (!activeModal) return;
+    activeModal.classList.remove('show');
+    overlay.classList.remove('show');
+    activeModal = null;
+  }
 
-  cards.forEach(card => {
-    card.addEventListener("click", e => {
-      e.stopPropagation();
-
-      const isActive = card.classList.contains("active");
-      resetCards(cards);
-
-      if (!isActive) {
-        card.classList.add("active");
-      }
+  document.querySelectorAll('[data-modal]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(btn.dataset.modal);
     });
   });
 
-  document.addEventListener("click", () => {
-    resetCards(cards);
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
   });
-}
 
-function resetCards(cards) {
-  cards.forEach(card => card.classList.remove("active"));
-}
+  document.querySelectorAll('.modal .close').forEach(btn => {
+    btn.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+});
