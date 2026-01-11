@@ -1,10 +1,12 @@
 /* ===== layout ===== */
 
-.cards {
+.cd-layout {
   display: flex;
-  justify-content: center;
-  padding: 5rem;
+  gap: 5rem;
+  margin-top: 3rem;
 }
+
+/* ===== wrapper ===== */
 
 .card-wrapper {
   position: relative;
@@ -14,31 +16,29 @@
 /* ===== card ===== */
 
 .card {
-  width: 320px;
-  height: 200px;
+  width: 300px;
+  height: 180px;
   padding: 2rem;
-  background: #222;
-  color: #fff;
+  background: #333;
   border-radius: 10px;
-  z-index: 2;
   position: relative;
+  z-index: 2;
 
   transition: transform 0.4s ease;
 }
 
-/* ===== detail panel ===== */
+/* ===== detail ===== */
 
 .card-detail {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 260px;
 
-  width: 480px;
+  width: 420px;
   height: 100%;
-  padding: 2rem 2rem 2rem 360px;
+  padding: 2rem;
 
   background: #111;
-  color: #fff;
   border-radius: 10px;
 
   opacity: 0;
@@ -52,57 +52,6 @@
 
 /* ===== active ===== */
 
-.card-wrapper.active .card {
-  transform: scale(1.15);
-}
-
-.card-wrapper.active .card-detail {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-
-/* ===== cards ===== */
-.cd-layout {
-  display: flex;
-  gap: 5rem;
-  margin-top: 3rem;
-}
-
-/* wrapper */
-.card-wrapper {
-  position: relative;
-  cursor: pointer;
-}
-
-/* card */
-.card {
-  width: 300px;
-  height: 180px;
-  padding: 2rem;
-  background: #333;
-  border-radius: 10px;
-  transition: transform .4s;
-  z-index: 2;
-  position: relative;
-}
-
-/* detail */
-.card-detail {
-  position: absolute;
-  inset: 0;
-  padding: 2rem 2rem 2rem 340px;
-  background: #111;
-  border-radius: 10px;
-
-  opacity: 0;
-  transform: translateX(40px);
-  pointer-events: none;
-
-  transition: .4s;
-}
-
-/* active */
 .card-wrapper.active .card {
   transform: scale(1.15);
 }
