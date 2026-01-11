@@ -46,7 +46,6 @@
 
   position: relative;
   overflow: hidden;
-  z-index: 2;
 
   transition:
     transform 0.45s ease,
@@ -118,6 +117,16 @@
   color: transparent;
   mix-blend-mode: plus-lighter;
   border-bottom: 1px solid;
+}
+
+.modal .card-content p {
+  color: var(--bt);
+  text-align: left;
+  position: absolute;
+  left: 2rem;
+  top: 9.5vmin;
+  width: 90%;
+  line-height: 1.4;
 }
 
 .card-footer {
