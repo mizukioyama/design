@@ -1,32 +1,50 @@
-console.log("🟢 card.js loaded");
+document.addEventListener("DOMContentLoaded", () => {
 
-export function initCard() {
-  const cards = document.querySelectorAll(".card-wrapper");
-  if (!cards.length) {
-    console.warn("⚠️ no card-wrapper found");
-    return;
+  /* ========= modal ========= */
+  const overlay = document.getElementById("overlay");
+  const modal = document.getElementById("modal--first");
+  const closeBtn = modal.querySelector(".close");
+
+  function openModal() {
+    overlay.classList.add("show");
+    modal.classList.add("show");
   }
 
-  console.log("✅ card init:", cards.length);
+  function closeModal() {
+    overlay.classList.remove("show");
+    modal.classList.remove("show");
+    resetCards();
+  }
+
+  overlay.addEventListener("click", closeModal);
+  closeBtn.addEventListener("click", closeModal);
+
+  openModal(); // 仮表示
+
+  /* ========= card ========= */
+  const cards = modal.querySelectorAll(".card-wrapper");
 
   cards.forEach(card => {
     card.addEventListener("click", e => {
-      e.stopPropagation();
+      e.stopPropagation(); // 🔑 超重要
 
-      const isActive = card.classList.contains("active");
-      resetCards(cards);
+      const active = card.classList.contains("active");
+      resetCards();
 
-      if (!isActive) {
+      if (!active) {
         card.classList.add("active");
       }
     });
   });
 
-  document.addEventListener("click", () => {
-    resetCards(cards);
+  // 🔑 card 以外をクリックした時だけ reset
+  modal.addEventListener("click", e => {
+    if (e.target.closest(".card-wrapper")) return;
+    resetCards();
   });
-}
 
-function resetCards(cards) {
-  cards.forEach(card => card.classList.remove("active"));
-}
+  function resetCards() {
+    cards.forEach(card => card.classList.remove("active"));
+  }
+
+});
