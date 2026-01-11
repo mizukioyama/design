@@ -46,6 +46,7 @@
 
   position: relative;
   overflow: hidden;
+  z-index: 1;
 
   transition:
     transform 0.45s ease,
@@ -90,8 +91,19 @@
 
 .card-wrapper.active .card-detail {
   opacity: 1;
-  transform: translateX(0) scale(1.5);
+  transform: translateX(70px) scale(1.35);
   pointer-events: auto;
+  z-index: 3;
+
+  transition: opacity 0.25s ease, transform 0.45s ease 0.15s;
+
+  animation: cardDetailFlow 0.7s ease forwards;
+}
+
+.card-wrapper:not(.active) .card-detail {
+  animation: none;
+  transform: translateX(0) scale(1);
+  z-index: 1;
 }
 
 .card-detail h5 {
@@ -106,6 +118,11 @@
   line-height: 1.8;
   opacity: 0;
   transition: opacity 0.6s ease 0.2s;
+}
+
+.card-header {
+  margin-left: 2rem;
+  margin-bottom: 0.8vmin;
 }
 
 .card-content h3 {
@@ -144,4 +161,30 @@
   content: "more -";
   font-size: clamp(1.2rem, 0.867rem + 0.44vw, 1.4rem);
   margin-left: 1rem;
+}
+
+
+@keyframes cardDetailFlow {
+  /* ① 左にスライド */
+  0% {
+    transform: translateX(0) scale(1);
+    z-index: 1;
+  }
+
+  35% {
+    transform: translateX(-80px) scale(1);
+    z-index: 1;
+  }
+
+  /* ② 停止＋レイヤーを上へ */
+  55% {
+    transform: translateX(-80px) scale(1);
+    z-index: 3;
+  }
+
+  /* ③ 右へスライドして card に重なる */
+  100% {
+    transform: translateX(70px) scale(1.35);
+    z-index: 3;
+  }
 }
