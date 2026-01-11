@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `scale(1.2) translate(${translateX}px, ${translateY}px)`;
 
       setTimeout(() => {
-        const bg = cardWrapper.querySelector(".card-background");
+        const bg = cardWrapper.querySelector(".card-detail");
         if (!bg) return;
 
         Object.assign(bg.style, {
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardWrapper.style.transform = "";
     cardWrapper.style.zIndex = "";
 
-    const bg = cardWrapper.querySelector(".card-background");
+    const bg = cardWrapper.querySelector(".card-detail");
     if (bg) {
       bg.style.opacity = "";
       bg.style.pointerEvents = "";
