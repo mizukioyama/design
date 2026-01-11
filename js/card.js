@@ -1,21 +1,32 @@
-console.log("🔥 script loaded");
+console.log("🟢 card.js loaded");
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initCard() {
   const cards = document.querySelectorAll(".card-wrapper");
+  if (!cards.length) {
+    console.warn("⚠️ no card-wrapper found");
+    return;
+  }
+
+  console.log("✅ card init:", cards.length);
 
   cards.forEach(card => {
     card.addEventListener("click", e => {
       e.stopPropagation();
-      console.log("✅ card clicked");
 
       const isActive = card.classList.contains("active");
+      resetCards(cards);
 
-      cards.forEach(c => c.classList.remove("active"));
-      if (!isActive) card.classList.add("active");
+      if (!isActive) {
+        card.classList.add("active");
+      }
     });
   });
 
-  document.body.addEventListener("click", () => {
-    cards.forEach(c => c.classList.remove("active"));
+  document.addEventListener("click", () => {
+    resetCards(cards);
   });
-});
+}
+
+function resetCards(cards) {
+  cards.forEach(card => card.classList.remove("active"));
+}
