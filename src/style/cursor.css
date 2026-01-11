@@ -11,7 +11,7 @@
     transform: translate(-50%, -50%);
     mix-blend-mode: difference;
     pointer-events: none; /* クリックを無効化 */
-    z-index: 9999; /* 最前面に配置 */
+    z-index: 999; /* 最前面に配置 */
     transition: transform 0.1s ease-out;
 }
 
@@ -23,7 +23,6 @@
     border: 1px solid #fff;
     box-shadow: 0 0 3px rgba(25, 25, 25);
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
-    z-index: 10000;
 }
 
 #stalker {
@@ -33,7 +32,6 @@
     border-radius: 50%;
     transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
     box-shadow: 0 0 4px rgba(25, 25, 25);
-    z-index: 9999;
 }
 
 /* ホバー時のスタイル */
@@ -53,7 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000;
+    z-index: 1000;
 }
 .stalker--hover::after {
     content: "Click";
