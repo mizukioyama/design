@@ -1,33 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".card-wrapper");
-
-  cards.forEach(card => {
-    card.addEventListener("click", e => {
-      e.stopPropagation();
-
-      const active = card.classList.contains("active");
-      reset(cards);
-
-      if (!active) {
-        card.classList.add("active");
-      }
-    });
-  });
-
-  document.addEventListener("click", () => {
-    reset(cards);
-  });
-});
-
-function reset(cards) {
-  cards.forEach(card => {
-    card.classList.remove("active");
-  });
-}
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
 
   /* ========= modal ========= */
   const overlay = document.getElementById("overlay");
@@ -48,15 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay.addEventListener("click", closeModal);
   closeBtn.addEventListener("click", closeModal);
 
-  /* 仮：初期表示（本番では trigger から） */
-  openModal();
+  openModal(); // 仮表示
 
   /* ========= card ========= */
   const cards = modal.querySelectorAll(".card-wrapper");
 
   cards.forEach(card => {
     card.addEventListener("click", e => {
-      e.stopPropagation();
+      e.stopPropagation(); // 🔑 超重要
 
       const active = card.classList.contains("active");
       resetCards();
@@ -67,12 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // 🔑 card 以外をクリックした時だけ reset
+  modal.addEventListener("click", e => {
+    if (e.target.closest(".card-wrapper")) return;
+    resetCards();
+  });
+
   function resetCards() {
     cards.forEach(card => card.classList.remove("active"));
   }
-
-  modal.addEventListener("click", () => {
-    resetCards();
-  });
 
 });
