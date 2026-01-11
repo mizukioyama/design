@@ -6,16 +6,7 @@
   backdrop-filter: blur(4px);
   z-index: 999;
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
   transition: opacity .3s ease, visibility .3s;
-}
-
-.modal-overlay.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
 }
 
 /* modal */
@@ -37,12 +28,22 @@
 
   z-index: 1000;
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
   overflow-y: auto;
 
   transition: opacity .3s ease, transform .3s ease, visibility .3s;
+}
+
+.modal,
+.modal-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal.show {
@@ -51,6 +52,7 @@
   transform: translate(-50%, -50%) scale(1);
   pointer-events: auto;
 }
+
 
 /* close */
 .modal .close {
