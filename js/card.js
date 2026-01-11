@@ -5,22 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", e => {
       e.stopPropagation();
 
-      const isActive = card.classList.contains("active");
-      resetCards(cards);
+      const active = card.classList.contains("active");
+      reset(cards);
 
-      if (!isActive) {
+      if (!active) {
         card.classList.add("active");
       }
     });
   });
 
-  // card 外クリックでリセット
   document.addEventListener("click", () => {
-    resetCards(cards);
+    reset(cards);
   });
 });
 
-function resetCards(cards) {
+function reset(cards) {
   cards.forEach(card => {
     card.classList.remove("active");
   });
