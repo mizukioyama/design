@@ -57,11 +57,11 @@
    animation: moveBackground 0.55s linear infinite;*/
 }
 
-.tab-content {
+.tab-container {
    display: none;
 }
 
-.tab-content.show {
+.tab-container.show {
    display: block !important;
    width: 60vmin;
    margin: 0 auto;
