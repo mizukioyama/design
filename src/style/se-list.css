@@ -15,8 +15,8 @@
    align-items: end;
    justify-content: space-between;
    border-bottom: 1px solid var(--border);
-   -webkit-backdrop-filter: blur(3px);
-   backdrop-filter: blur(3px);
+   /*-webkit-backdrop-filter: blur(3px);
+   backdrop-filter: blur(3px);*/
 }
 
 .list-tab {

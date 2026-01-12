@@ -1,23 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll(".list-tab");
-  const containers = document.querySelectorAll("#container");
+  const contents = document.querySelectorAll("#container .container");
 
-  if (!tabs.length || !containers.length) return;
+  if (!tabs.length || !contents.length) return;
 
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       const tabId = tab.id.replace("li-tab--", "");
 
+      // タブの見た目切替
       tabs.forEach(t => t.classList.remove("selected"));
       tab.classList.add("selected");
 
-      containers.forEach(c => c.classList.remove("show"));
-      document.getElementById("content--" + tabId)?.classList.add("show");
+      // コンテンツ切替
+      contents.forEach(c => c.classList.remove("show"));
+      document
+        .getElementById("content--" + tabId)
+        ?.classList.add("show");
     });
   });
 
-  // 初期タブ（他JS初期化後）
-  setTimeout(() => {
-    document.getElementById("li-tab--first")?.click();
-  }, 0);
+  // 初期表示
+  document.getElementById("li-tab--first")?.click();
 });
