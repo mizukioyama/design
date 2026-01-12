@@ -101,12 +101,12 @@ section #container .se-box {
    cursor: pointer;
 }
 
-#wrap .container h3 {
+#wrap .tab-container h3 {
    text-shadow: 1px 1px 2px #010101;
    margin-top: 8rem;
 }
 
-#wrap .container ol h4 {
+#wrap .tab-container ol h4 {
    font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
    font-weight: 500;
    color: var(--bg);
@@ -116,12 +116,12 @@ section #container .se-box {
    text-shadow: 1px 1px 1px #010101;
 }
 
-#wrap .container ol {
+#wrap .tab-container ol {
    padding-bottom: 3.5rem;
    border-bottom: 10px solid var(--border);
 }
 
-#wrap .container li {
+#wrap .tab-container li {
    font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
    font-weight: 700;
    text-shadow: 1px 1px 1px #010101;
