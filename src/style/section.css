@@ -95,7 +95,8 @@
    right: 0;
    color: var(--text);
    background-color: rgba(199, 199, 199, 0.5);
-   box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.95);
+   /*box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.95);*/
+   box-shadow: inset 1px 1px 4px rgba(0, 0, 0);
    border-radius: 20px;
    mix-blend-mode: hard-light;
    transition: all 0.35s ease;
@@ -115,6 +116,7 @@
 .sec-a a:hover {
    color: var(--bg);
    background: var(--bt);
+   background: rgba(0, 0, 0, 0.35);
 }
 
 p a {

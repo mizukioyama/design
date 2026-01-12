@@ -236,17 +236,17 @@
   }
 
   45% {
-    transform: translateX(280px) scale(0.95);
+    transform: translateX(280px) scale(0.9);
     z-index: 3;
   }
 
   65% {
-    transform: translateX(280px) scale(0.95);
+    transform: translateX(280px) scale(0.9);
     z-index: 1;
   }
 
   100% {
-    transform: translateX(0) scale(0.95);
+    transform: translateX(0) scale(1);
     z-index: 1;
   }
 }
