@@ -18,6 +18,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 初期表示
   document.getElementById("li-tab--first")?.click();
 });
