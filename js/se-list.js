@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll(".list-tab");
   const contents = document.querySelectorAll(".tab-content");
 
+  if (!tabs.length || !contents.length) return;
+
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       const key = tab.id.replace("li-tab--", "");
