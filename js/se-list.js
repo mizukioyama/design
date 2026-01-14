@@ -1,29 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".list-tab");
-  const contents = document.querySelectorAll(".tab-container");
+  document.addEventListener("click", (e) => {
+    const tab = e.target.closest(".list-tab");
+    if (!tab) return;
 
-  if (!tabs.length || !contents.length) {
-    console.warn("tabs or tab contents not found");
-    return;
-  }
+    const key = tab.id.replace("li-tab--", "");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      const key = tab.id.replace("li-tab--", "");
+    // tab
+    document.querySelectorAll(".list-tab").forEach(t =>
+      t.classList.remove("selected")
+    );
+    tab.classList.add("selected");
 
-      // tab切替
-      tabs.forEach(t => t.classList.remove("selected"));
-      tab.classList.add("selected");
+    // content
+    document.querySelectorAll(".tab-container").forEach(c =>
+      c.style.display = "none"
+    );
 
-      // content切替
-      contents.forEach(c => c.classList.remove("show"));
-      const target = document.getElementById("content--" + key);
-      if (target) {
-        target.classList.add("show");
-      }
-    });
+    const target = document.getElementById("content--" + key);
+    if (target) {
+      target.style.display = "block";
+    }
   });
 
-  // 初期表示
-  document.getElementById("li-tab--first")?.click();
+  // 初期表示をJSで強制
+  document.querySelectorAll(".tab-container").forEach(c =>
+    c.style.display = "none"
+  );
+  document.getElementById("content--first").style.display = "block";
 });

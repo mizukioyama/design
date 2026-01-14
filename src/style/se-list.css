@@ -62,13 +62,13 @@
    display: none;
 }
 
-.tab-container.show {
+/*.tab-container.show {
    display: block !important;
    width: 60vmin;
    margin: 0 auto;
    padding: 0 2rem 2rem;
    animation: fadeIn 0.6s ease-in-out forwards;
-}
+}*/
 
 @keyframes fadeIn {
    from {
