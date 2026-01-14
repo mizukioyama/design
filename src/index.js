@@ -7,16 +7,26 @@ console.log('modal js loaded');
 
 // 各ページ固有の処理
 switch (page) {
-   case "service":
-      //import("./style/se_card.css");
-      import("./style/card.css");
-      import("./style/se-list.css");
-      import("../js/se-list.js");
-      //import("../js/se_card.js");
-      import("../js/card.js").then(module => {
-    module.initCard();
+case "service":
+  import("./style/card.css");
+  import("./style/se-list.css");
+
+  Promise.all([
+    import("../js/card.js"),
+    import("../js/se-list.js")
+  ]).then(([cardModule, listModule]) => {
+    if (cardModule.initCard) {
+      cardModule.initCard();
+    }
+    if (listModule.initTab) {
+      listModule.initTab();
+    }
+  }).catch(err => {
+    console.error("service page js error:", err);
   });
-      break;
+
+  break;
+
 
    case "contact":
       import("./style/form.css");

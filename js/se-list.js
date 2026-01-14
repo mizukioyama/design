@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initTab() {
   const tabs = document.querySelectorAll(".list-tab");
   const contents = document.querySelectorAll(".tab-container");
+
+  if (!tabs.length || !contents.length) return;
 
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
@@ -10,8 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
-      const target = document.getElementById("content--" + key);
-      if (target) target.classList.add("show");
+      document
+        .getElementById("content--" + key)
+        ?.classList.add("show");
     });
   });
-});
+}
