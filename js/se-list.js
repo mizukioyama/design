@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const contents = document.querySelectorAll(".tab-container");
 
   if (!tabs.length || !contents.length) {
-    console.warn("tab or content not found");
+    console.warn("tabs or tab contents not found");
     return;
   }
 
@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // content切替
       contents.forEach(c => c.classList.remove("show"));
       const target = document.getElementById("content--" + key);
-      if (target) target.classList.add("show");
+      if (target) {
+        target.classList.add("show");
+      }
     });
   });
 
