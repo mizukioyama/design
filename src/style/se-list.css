@@ -60,15 +60,17 @@
 
 .tab-container {
    display: none;
+   opacity: 0;
 }
 
-/*.tab-container.show {
-   display: block !important;
+.tab-container.show {
+   display: block;
    width: 60vmin;
    margin: 0 auto;
    padding: 0 2rem 2rem;
    animation: fadeIn 0.6s ease-in-out forwards;
-}*/
+   opacity: 1;
+}
 
 @keyframes fadeIn {
    from {
@@ -88,6 +90,7 @@
    overflow-x: hidden;
    overflow-y: scroll;
    display: flex;
+   display: block;
    align-items: start;
    justify-content: center;
    border: 1px solid var(--border);

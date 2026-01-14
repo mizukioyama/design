@@ -1,30 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("click", (e) => {
-    const tab = e.target.closest(".list-tab");
-    if (!tab) return;
+  const tabs = document.querySelectorAll(".list-tab");
+  const contents = document.querySelectorAll(".tab-container");
 
-    const key = tab.id.replace("li-tab--", "");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const key = tab.id.replace("li-tab--", "");
 
-    // tab
-    document.querySelectorAll(".list-tab").forEach(t =>
-      t.classList.remove("selected")
-    );
-    tab.classList.add("selected");
+      tabs.forEach(t => t.classList.remove("selected"));
+      tab.classList.add("selected");
 
-    // content
-    document.querySelectorAll(".tab-container").forEach(c =>
-      c.style.display = "none"
-    );
-
-    const target = document.getElementById("content--" + key);
-    if (target) {
-      target.style.display = "block";
-    }
+      contents.forEach(c => c.classList.remove("show"));
+      document.getElementById("content--" + key)?.classList.add("show");
+    });
   });
 
-  // 初期表示をJSで強制
-  document.querySelectorAll(".tab-container").forEach(c =>
-    c.style.display = "none"
-  );
-  document.getElementById("content--first").style.display = "block";
+  // 初期表示
+  document.getElementById("content--first")?.classList.add("show");
 });
