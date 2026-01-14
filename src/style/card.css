@@ -111,7 +111,7 @@
   padding: 1.5rem 3rem 0;
 
   background:
-    linear-gradient(to top, rgba(0, 0, 0, .65), rgba(20, 20, 20, .4)),
+    linear-gradient(to top, rgba(255, 255, 255, .2), rgba(20, 20, 20, .4)),
     url("../assets/images/pd-body-bg.jpg");
 
   background-size: cover;

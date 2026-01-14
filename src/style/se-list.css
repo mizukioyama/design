@@ -60,7 +60,6 @@
 
 .tab-container {
    display: none;
-   opacity: 0;
 }
 
 .tab-container.show {
@@ -69,7 +68,6 @@
    margin: 0 auto;
    padding: 0 2rem 2rem;
    animation: fadeIn 0.6s ease-in-out forwards;
-   opacity: 1;
 }
 
 @keyframes fadeIn {

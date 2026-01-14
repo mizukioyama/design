@@ -10,10 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
-      document.getElementById("content--" + key)?.classList.add("show");
+
+      const target = document.getElementById("content--" + key);
+      if (target) target.classList.add("show");
     });
   });
-
-  // 初期表示
-  document.getElementById("content--first")?.classList.add("show");
 });
