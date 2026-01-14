@@ -11,11 +11,11 @@ switch (page) {
       //import("./style/se_card.css");
       import("./style/card.css");
       import("./style/se-list.css");
+      import("../js/se-list.js");
       //import("../js/se_card.js");
       import("../js/card.js").then(module => {
-    module.initCard(); // ← ★ここが超重要
+    module.initCard();
   });
-      import("../js/se-list.js");
       break;
 
    case "contact":

@@ -60,6 +60,7 @@
 
 .tab-container {
    display: none;
+   width: 100%;
 }
 
 .tab-container.show {
@@ -87,8 +88,7 @@
    height: 45vmin;
    overflow-x: hidden;
    overflow-y: scroll;
-   display: flex;
-   display: block;
+   
    align-items: start;
    justify-content: center;
    border: 1px solid var(--border);
