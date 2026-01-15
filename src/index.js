@@ -10,10 +10,11 @@ switch (page) {
 case "service":
   import("./style/card.css");
   import("./style/se-list.css");
-
+  
   Promise.all([
     import("../js/card.js"),
-    import("../js/se-list.js")
+    import("../js/se-list.js"),
+    import("../js/tab.js")
   ]).then(([cardModule, listModule]) => {
     if (cardModule.initCard) {
       cardModule.initCard();
@@ -56,7 +57,6 @@ import "./assets/fonts/fonts.css";
 import("./style/mobile-all.css");
 import("./style/mobile-page.css");
 import("./style/tab.css");
-import("../js/tab.js");
 
 // PC all
 import "./style/all.css";      // 全ページ共通
