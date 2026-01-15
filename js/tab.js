@@ -1,8 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initTab() {
+  const tabs = document.querySelectorAll(".tabs-container .tab");
+  const slider = document.querySelector(".tab-slider");
 
-  /* ===============================
-     Smooth Scroll
-  =============================== */
+  if (!tabs.length || !slider) {
+    console.warn("tab elements not found");
+    return;
+  }
+
+  function moveSlider(target) {
+    const rect = target.getBoundingClientRect();
+    const parentRect = target.parentElement.getBoundingClientRect();
+
+    slider.style.width = rect.width + "px";
+    slider.style.left = rect.left - parentRect.left + "px";
+  }
+
   function smoothScroll(targetEl, duration = 600) {
     if (!targetEl || targetEl === "#") return;
 
@@ -35,53 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   }
 
-  /* ===============================
-     Tab Control
-  =============================== */
-  const tabs = document.querySelectorAll(".tabs-container .tab");
-  const slider = document.querySelector(".tab-slider");
-
-  if (!tabs.length || !slider) return;
-
-  function moveSlider(target) {
-    const rect = target.getBoundingClientRect();
-    const parentRect = target.parentElement.getBoundingClientRect();
-
-    slider.style.width = rect.width + "px";
-    slider.style.left = rect.left - parentRect.left + "px";
-  }
-
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
 
-      // active 管理
       tabs.forEach(t => t.classList.remove("is-active"));
       tab.classList.add("is-active");
 
-      // スライダー移動
       moveSlider(tab);
-
-      // スムーススクロール
       smoothScroll(tab.getAttribute("href"));
     });
   });
 
-  /* ===============================
-     初期位置
-  =============================== */
-  const firstTab = tabs[0];
-  if (firstTab) {
-    firstTab.classList.add("is-active");
-    moveSlider(firstTab);
-  }
+  // 初期化
+  tabs[0].classList.add("is-active");
+  moveSlider(tabs[0]);
 
-  /* ===============================
-     リサイズ対応
-  =============================== */
   window.addEventListener("resize", () => {
-    const activeTab = document.querySelector(".tab.is-active");
-    if (activeTab) moveSlider(activeTab);
+    const active = document.querySelector(".tab.is-active");
+    if (active) moveSlider(active);
   });
-
-});
+}

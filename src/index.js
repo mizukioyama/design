@@ -1,97 +1,111 @@
-console.log("Hello, Webpack!");
+// ===============================
+// Page detection
+// ===============================
+const page = document.body.dataset.page;
 
-// ページ判定
-const page = document.body.dataset.page; // 例: <body data-page="contact"> のように設定
+// ===============================
+// Global assets (ALL PAGES)
+// ===============================
 
-console.log('modal js loaded');
-
-// 各ページ固有の処理
-switch (page) {
-case "service":
-  import("./style/card.css");
-  import("./style/se-list.css");
-  
-  Promise.all([
-    import("../js/card.js"),
-    import("../js/se-list.js"),
-    import("../js/tab.js")
-  ]).then(([cardModule, listModule]) => {
-    if (cardModule.initCard) {
-      cardModule.initCard();
-    }
-    if (listModule.initTab) {
-      listModule.initTab();
-    }
-  }).catch(err => {
-    console.error("service page js error:", err);
-  });
-
-  break;
-
-
-   case "contact":
-      import("./style/form.css");
-      import("../js/form.js");
-      break;
-
-   case "blog":
-      import("./style/blog.css");
-      import("../js/blog.js");
-      import("../js/blog-categories.js");
-      break;
-
-   case "matching":
-      import("./style/matching.css");
-      import("../js/hearing.js");
-      break;
-}
-
-/////////// all css
-
-// audio icon
-import '@fortawesome/fontawesome-free/css/all.min.css';
-// font
+// icons & fonts
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/fonts/fonts.css";
 
-// Mobile all（共通適用）
-import("./style/mobile-all.css");
-import("./style/mobile-page.css");
-import("./style/tab.css");
+// common PC styles
+import "./style/all.css";
+import "./style/menu.css";
+import "./style/cursor.css";
+import "./style/section.css";
+import "./style/bot.css";
+import "./style/footer.css";
+import "./style/accordion.css";
+import "./style/modal.css";
 
-// PC all
-import "./style/all.css";      // 全ページ共通
-import "./style/menu.css";     // メニュー
-import "./style/cursor.css";   // カーソル
-import "./style/section.css";  // セクション
-import "./style/bot.css";      // ボット
-import "./style/footer.css";   // フッター
-import "./style/accordion.css";// アコーディオン
-import "./style/modal.css";    // モーダル
+// common JS
+import "../js/section.js";
+import "../js/cursor.js";
+import "../js/accordion.js";
+import "../js/chat.js";
+import "../js/fade.js";
+import "../js/head-foot.js";
+import "../js/modal.js";
+import "../js/google.js";
 
-// 共通 JavaScript
-import "../js/section.js"; // section
-import "../js/cursor.js"; // cursor
-import "../js/accordion.js"; // accordion
-import "../js/chat.js"; // chat
-import "../js/fade.js"; // fade
-import "../js/head-foot.js"; // head foot
-import "../js/modal.js"; // modal
-import "../js/google.js"; // google
+// ===============================
+// Mobile common (ALL PAGES)
+// ===============================
+const isMobile = window.matchMedia("(max-width: 599px)").matches;
 
-/////////// all images
+if (isMobile) {
+  import("./style/mobile-all.css");
+  import("./style/mobile-page.css");
+  import("./style/tab.css");
+
+  import("../js/tab.js")
+    .then(m => m.initTab?.())
+    .catch(err => console.error("mobile tab error:", err));
+}
+
+// ===============================
+// Page specific
+// ===============================
+switch (page) {
+  case "service":
+    import("./style/card.css");
+    import("./style/se-list.css");
+
+    Promise.all([
+      import("../js/card.js"),
+      import("../js/se-list.js")
+    ]).then(([card, list]) => {
+      card.initCard?.();
+
+      // ※ mobile tab.js と役割が被らないよう注意
+      if (!isMobile) {
+        list.initTab?.();
+      }
+    }).catch(err => {
+      console.error("service page js error:", err);
+    });
+    break;
+
+  case "contact":
+    import("./style/form.css");
+    import("../js/form.js");
+    break;
+
+  case "blog":
+    import("./style/blog.css");
+    import("../js/blog.js");
+    import("../js/blog-categories.js");
+    break;
+
+  case "matching":
+    import("./style/matching.css");
+    import("../js/hearing.js");
+    break;
+}
+
+// ===============================
+// Assets
+// ===============================
 import "./assets/images/pd.ico";
 import "./assets/images/logo-tyep.png";
 import "./assets/images/pd-bg-img.jpg";
 import "./assets/images/pd-body-bg.jpg";
+
 // bg
 import "./assets/images/text-gold.png";
 import "./assets/images/text-bronze.png";
+
 // section
 import "./assets/images/bg-a.png";
 import "./assets/images/bg-c.png";
 import "./assets/images/bg-s.png";
 import "./assets/images/bg-p.png";
-//mobile
+
+// mobile
 import "./assets/images/mobile-main-second.png";
 
+// audio
 import "./assets/audio/tukinohikari.mp3";
