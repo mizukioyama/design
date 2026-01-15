@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* ===============================
+     Smooth Scroll
+  =============================== */
   function smoothScroll(targetEl, duration = 600) {
     if (!targetEl || targetEl === "#") return;
 
@@ -32,12 +35,53 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   }
 
-  document.querySelectorAll('a[href^="#"]:not([href="#"])')
-    .forEach(anchor => {
-      anchor.addEventListener("click", e => {
-        e.preventDefault();
-        smoothScroll(anchor.getAttribute("href"));
-      });
+  /* ===============================
+     Tab Control
+  =============================== */
+  const tabs = document.querySelectorAll(".tabs-container .tab");
+  const slider = document.querySelector(".tab-slider");
+
+  if (!tabs.length || !slider) return;
+
+  function moveSlider(target) {
+    const rect = target.getBoundingClientRect();
+    const parentRect = target.parentElement.getBoundingClientRect();
+
+    slider.style.width = rect.width + "px";
+    slider.style.left = rect.left - parentRect.left + "px";
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", e => {
+      e.preventDefault();
+
+      // active 管理
+      tabs.forEach(t => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+
+      // スライダー移動
+      moveSlider(tab);
+
+      // スムーススクロール
+      smoothScroll(tab.getAttribute("href"));
     });
+  });
+
+  /* ===============================
+     初期位置
+  =============================== */
+  const firstTab = tabs[0];
+  if (firstTab) {
+    firstTab.classList.add("is-active");
+    moveSlider(firstTab);
+  }
+
+  /* ===============================
+     リサイズ対応
+  =============================== */
+  window.addEventListener("resize", () => {
+    const activeTab = document.querySelector(".tab.is-active");
+    if (activeTab) moveSlider(activeTab);
+  });
 
 });
