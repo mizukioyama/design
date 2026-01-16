@@ -4,11 +4,6 @@
 const page = document.body.dataset.page;
 
 // ===============================
-// Mobile判定
-// ===============================
-const isMobile = window.matchMedia("(max-width: 599px)").matches;
-
-// ===============================
 // Global assets (ALL PAGES)
 // ===============================
 
@@ -16,7 +11,7 @@ const isMobile = window.matchMedia("(max-width: 599px)").matches;
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/fonts/fonts.css";
 
-// common styles
+// common PC styles
 import "./style/all.css";
 import "./style/menu.css";
 import "./style/cursor.css";
@@ -37,12 +32,31 @@ import "../js/modal.js";
 import "../js/google.js";
 
 // ===============================
+// Mobile common (ALL PAGES)
+// ===============================
+const isMobile = window.matchMedia("(max-width: 599px)").matches;
+
+if (isMobile) {
+  // mobile CSS
+  import("./style/mobile-all.css");
+  import("./style/mobile-page.css");
+  import("./style/tab.css");
+
+  // mobile tab
+  import("../js/tab.js")
+    .then(tabModule => {
+      tabModule.initTab?.(); // ← 即実行（DOMContentLoaded 不要）
+    })
+    .catch(err => {
+      console.error("mobile tab error:", err);
+    });
+}
+
+// ===============================
 // Page specific
 // ===============================
 switch (page) {
-
   case "service":
-    // service 共通
     import("./style/card.css");
     import("./style/se-list.css");
 
@@ -51,25 +65,14 @@ switch (page) {
       import("../js/se-list.js")
     ]).then(([card, list]) => {
       card.initCard?.();
-      list.initTab?.(); // ← PC用 / se-list用
+
+      // ※ mobile tab.js と役割が被らないよう注意
+      if (!isMobile) {
+        list.initTab?.();
+      }
+    }).catch(err => {
+      console.error("service page js error:", err);
     });
-
-    // 🔽 Service × Mobile のときだけ tab を有効化
-    if (isMobile) {
-      Promise.all([
-        import("./style/mobile-all.css"),
-        import("./style/mobile-page.css"),
-        import("./style/tab.css"),
-        import("../js/tab.js")
-      ])
-        .then(([, , , tab]) => {
-          tab.initTab?.();
-        })
-        .catch(err => {
-          console.error("service mobile tab error:", err);
-        });
-    }
-
     break;
 
   case "contact":
