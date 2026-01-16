@@ -4,6 +4,11 @@
 const page = document.body.dataset.page;
 
 // ===============================
+// Mobile判定
+// ===============================
+const isMobile = window.matchMedia("(max-width: 599px)").matches;
+
+// ===============================
 // Global assets (ALL PAGES)
 // ===============================
 
@@ -37,25 +42,33 @@ import "../js/google.js";
 switch (page) {
 
   case "service":
-    // CSS
+    // service 共通
     import("./style/card.css");
     import("./style/se-list.css");
-    import("./style/tab.css");
 
-    // JS
     Promise.all([
       import("../js/card.js"),
-      import("../js/se-list.js"),
-      import("../js/tab.js")
-    ])
-      .then(([card, list, tab]) => {
-        card.initCard?.();
-        list.initTab?.();   // ← se-list 用ならOK
-        tab.initTab?.();    // ← mobile / PC 共通
-      })
-      .catch(err => {
-        console.error("service page js error:", err);
-      });
+      import("../js/se-list.js")
+    ]).then(([card, list]) => {
+      card.initCard?.();
+      list.initTab?.(); // ← PC用 / se-list用
+    });
+
+    // 🔽 Service × Mobile のときだけ tab を有効化
+    if (isMobile) {
+      Promise.all([
+        import("./style/mobile-all.css"),
+        import("./style/mobile-page.css"),
+        import("./style/tab.css"),
+        import("../js/tab.js")
+      ])
+        .then(([, , , tab]) => {
+          tab.initTab?.();
+        })
+        .catch(err => {
+          console.error("service mobile tab error:", err);
+        });
+    }
 
     break;
 
@@ -83,11 +96,19 @@ import "./assets/images/pd.ico";
 import "./assets/images/logo-tyep.png";
 import "./assets/images/pd-bg-img.jpg";
 import "./assets/images/pd-body-bg.jpg";
+
+// bg
 import "./assets/images/text-gold.png";
 import "./assets/images/text-bronze.png";
+
+// section
 import "./assets/images/bg-a.png";
 import "./assets/images/bg-c.png";
 import "./assets/images/bg-s.png";
 import "./assets/images/bg-p.png";
+
+// mobile
 import "./assets/images/mobile-main-second.png";
+
+// audio
 import "./assets/audio/tukinohikari.mp3";
