@@ -37,19 +37,16 @@ import "../js/google.js";
 const isMobile = window.matchMedia("(max-width: 599px)").matches;
 
 if (isMobile) {
-  // mobile CSS
-  import("./style/mobile-all.css");
-  import("./style/mobile-page.css");
-  import("./style/tab.css");
-
   Promise.all([
+    import("./style/mobile-all.css"),
+    import("./style/mobile-page.css"),
     import("./style/tab.css"),
     import("../js/tab.js")
-  ]).then(([, tab]) => {
+  ]).then(([, , , tabModule]) => {
     window.addEventListener("DOMContentLoaded", () => {
-      tab.initTab();
+      tabModule.initTab?.();
     });
-  });
+  }).catch(err => console.error("mobile tab error:", err));
 }
 
 // ===============================

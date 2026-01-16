@@ -1,30 +1,29 @@
 export function initTab() {
   const container = document.querySelector(".tabs-container");
-  if (!container) {
-    console.warn("tabs-container not found");
-    return;
-  }
+  if (!container) return;
 
   const tabs = container.querySelectorAll(".tab");
-  if (!tabs.length) {
-    console.warn("tabs not found");
-    return;
+  const slider = container.querySelector(".tab-slider");
+
+  if (!tabs.length || !slider) return;
+
+  function moveSlider(target) {
+    const rect = target.getBoundingClientRect();
+    const parentRect = container.getBoundingClientRect();
+    slider.style.width = rect.width + "px";
+    slider.style.left = rect.left - parentRect.left + "px";
   }
 
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
-
       tabs.forEach(t => t.classList.remove("is-active"));
       tab.classList.add("is-active");
-
-      const target = document.querySelector(tab.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+      moveSlider(tab);
+      smoothScroll(tab.getAttribute("href"));
     });
   });
 
-  // 初期アクティブ
   tabs[0].classList.add("is-active");
+  moveSlider(tabs[0]);
 }
