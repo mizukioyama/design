@@ -1,46 +1,30 @@
 export function initTab() {
   const container = document.querySelector(".tabs-container");
-  if (!container) return;
+  if (!container) {
+    console.warn("tabs-container not found");
+    return;
+  }
 
-  const tabs = [...container.querySelectorAll(".tab")];
-  const slider = container.querySelector(".tab-slider");
-  if (!tabs.length || !slider) return;
-
-  const moveSlider = (tab) => {
-    const tabRect = tab.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-
-    slider.style.width = tabRect.width + "px";
-    slider.style.top =
-      tab.offsetTop + tab.offsetHeight - 2 + "px";
-  };
-
-  const activateTab = (tab) => {
-    tabs.forEach(t => t.classList.remove("is-active"));
-    tab.classList.add("is-active");
-    moveSlider(tab);
-  };
+  const tabs = container.querySelectorAll(".tab");
+  if (!tabs.length) {
+    console.warn("tabs not found");
+    return;
+  }
 
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
+
+      tabs.forEach(t => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+
       const target = document.querySelector(tab.getAttribute("href"));
-      if (!target) return;
-
-      activateTab(tab);
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     });
   });
 
-  // 初期化（animation後に実行）
-  const firstTab = tabs[0];
-  activateTab(firstTab);
-
-  setTimeout(() => {
-    moveSlider(firstTab);
-  }, 500);
+  // 初期アクティブ
+  tabs[0].classList.add("is-active");
 }

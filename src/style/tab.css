@@ -82,61 +82,50 @@ html {
     z-index: 1;
 }
 
-/* ===============================
-   Mobile TAB ONLY
-=============================== */
-@media (max-width: 599px) {
+@media screen and (max-width: 600px) {
+    .tabs-container {
+        display: grid;
+        bottom: 5em;
+        width: 35%;
+        padding: 0;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.75);
+    }
 
-  html {
-    scroll-behavior: smooth;
-  }
+    .tab {
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 0px 0px 2.5px rgba(46, 46, 46, 0.35);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        background: rgba(150, 150, 150, 0.85);
+    }
 
-  .tabs-container {
-    position: fixed;
-    bottom: 4.5em;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    opacity: 0;
-    animation: tabFadeIn 0.6s ease forwards;
-    z-index: 100;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(6px);
-  }
-
-  @keyframes tabFadeIn {
-    to { opacity: 1; }
-  }
-
-  .tab {
-    display: block;
-    padding: 0.6em 1em;
-    margin-bottom: 0.3em;
-    color: #fff;
-    text-decoration: none;
-    background: rgba(60,60,60,0.85);
-    font-size: 1.3rem;
-    letter-spacing: 0.08em;
-  }
-
-  .tab.is-active {
-    background: #fff;
-    color: #000;
-  }
-
-  /* slider */
-  .tab-slider {
-    position: absolute;
-    left: 0;
-    height: 2px;
-    background: #fff;
-    transition: top 0.25s ease, width 0.25s ease;
-    pointer-events: none;
-  }
-
-  /* sections */
-  .slide {
-    min-height: 100svh;
-  }
+    .tab:active {
+        color: var(--text);
+        background: var(--bg);
+        transition: all 0.5s ease;
+    }
+    
+    .tabs-container a {
+        font-family: "Jost", serif;
+        color: var(--text);
+        display: inline;
+        line-height: 2.4;
+        text-shadow: 0px 0px 2px var(--text);
+        padding-bottom: 0.25rem;
+        margin: 0.5em 0.5em 0.5em 0;
+        align-content: center;
+    }
+    
+    .tabs-container a::after,
+    .tabs-container a::before {
+        display: none;
+    }
+    
+    .tab-slider {
+        border-radius: 3px;
+        background-color: var(--bg);
+    }
 }
