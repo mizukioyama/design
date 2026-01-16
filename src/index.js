@@ -42,14 +42,14 @@ if (isMobile) {
   import("./style/mobile-page.css");
   import("./style/tab.css");
 
-  // mobile tab
-  import("../js/tab.js")
-    .then(tabModule => {
-      tabModule.initTab?.(); // ← 即実行（DOMContentLoaded 不要）
-    })
-    .catch(err => {
-      console.error("mobile tab error:", err);
+  Promise.all([
+    import("./style/tab.css"),
+    import("../js/tab.js")
+  ]).then(([, tab]) => {
+    window.addEventListener("DOMContentLoaded", () => {
+      tab.initTab();
     });
+  });
 }
 
 // ===============================
