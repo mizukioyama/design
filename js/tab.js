@@ -4,35 +4,43 @@ export function initTab() {
 
   const tabs = container.querySelectorAll(".tab");
   const slider = container.querySelector(".tab-slider");
+
   if (!tabs.length || !slider) return;
 
-  // -----------------------
-  // slider move
-  // -----------------------
+  /* -----------------------
+     slider 移動
+  ------------------------ */
   function moveSlider(target) {
     const rect = target.getBoundingClientRect();
-    const parent = container.getBoundingClientRect();
+    const parentRect = container.getBoundingClientRect();
 
-    slider.style.width = rect.width + "px";
-    slider.style.left = rect.left - parent.left + "px";
+    slider.style.width = `${rect.width}px`;
+    slider.style.left = `${rect.left - parentRect.left}px`;
   }
 
-  // -----------------------
-  // smooth scroll
-  // -----------------------
-  function smoothScroll(targetEl) {
-    const target = document.querySelector(targetEl);
+  /* -----------------------
+     スムーススクロール
+     mobile対応・安全版
+  ------------------------ */
+  function smoothScroll(targetId) {
+    if (!targetId) return;
+
+    const target = document.querySelector(targetId);
     if (!target) return;
 
+    const y =
+      target.getBoundingClientRect().top +
+      window.pageYOffset;
+
     window.scrollTo({
-      top: target.offsetTop,
+      top: y,
       behavior: "smooth"
     });
   }
 
-  // -----------------------
-  // click
-  // -----------------------
+  /* -----------------------
+     click イベント
+  ------------------------ */
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
@@ -45,17 +53,20 @@ export function initTab() {
     });
   });
 
-  // -----------------------
-  // init（アニメ後に実行）
-  // -----------------------
-  setTimeout(() => {
-    tabs[0].classList.add("is-active");
-    moveSlider(tabs[0]);
-  }, 700);
+  /* -----------------------
+     初期化
+  ------------------------ */
+  const firstTab = tabs[0];
+  firstTab.classList.add("is-active");
 
-  // -----------------------
-  // resize対応
-  // -----------------------
+  // mobile描画ズレ防止
+  requestAnimationFrame(() => {
+    moveSlider(firstTab);
+  });
+
+  /* -----------------------
+     resize対応
+  ------------------------ */
   window.addEventListener("resize", () => {
     const active = container.querySelector(".tab.is-active");
     if (active) moveSlider(active);
