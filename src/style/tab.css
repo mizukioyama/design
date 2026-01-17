@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    position: relative;
+    /*position: relative;*/
     background: linear-gradient(to top, rgba(180, 180, 160, 0.4) 0%, rgba(180, 180, 160, 0.4) 100%),
     url("../assets/images/pd-body-bg.jpg") no-repeat center center/cover;
 }
@@ -19,7 +19,7 @@ html {
 
 .tabs-container {
     display: flex;
-    position: fixed;
+    position: relative;
     bottom: 40px; /* 表示したいY位置（調整可能） */
     left: -100%;  /* 初期位置：画面外 */
     transform: translateX(0%); /* 初期位置用 */

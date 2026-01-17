@@ -9,14 +9,9 @@ export function initTab() {
   function moveSlider(target) {
     const rect = target.getBoundingClientRect();
     const parentRect = container.getBoundingClientRect();
-    slider.style.width = rect.width + "px";
-    slider.style.left = rect.left - parentRect.left + "px";
-  }
 
-  function smoothScroll(targetEl) {
-    const target = document.querySelector(targetEl);
-    if (!target) return;
-    target.scrollIntoView({ behavior: "smooth" });
+    slider.style.width = `${rect.width}px`;
+    slider.style.left = `${rect.left - parentRect.left}px`;
   }
 
   tabs.forEach(tab => {
@@ -25,13 +20,17 @@ export function initTab() {
       tabs.forEach(t => t.classList.remove("is-active"));
       tab.classList.add("is-active");
       moveSlider(tab);
-      smoothScroll(tab.getAttribute("href"));
+
+      const target = document.querySelector(tab.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     });
   });
 
-  /* 🔴 アニメーション完了後に初期位置を計算 */
-  container.addEventListener("animationend", () => {
+  // 初期化（DOM描画後）
+  requestAnimationFrame(() => {
     tabs[0].classList.add("is-active");
     moveSlider(tabs[0]);
-  }, { once: true });
+  });
 }
