@@ -6,6 +6,9 @@ export function initTab() {
   const slider = container.querySelector(".tab-slider");
   if (!tabs.length || !slider) return;
 
+  /* =========================
+     Slider
+  ========================= */
   function moveSlider(target) {
     const rect = target.getBoundingClientRect();
     const parentRect = container.getBoundingClientRect();
@@ -13,25 +16,28 @@ export function initTab() {
     slider.style.left = rect.left - parentRect.left + "px";
   }
 
+  /* =========================
+     Smooth Scroll（速度制御可）
+  ========================= */
   function smoothScrollTo(targetId, duration = 1200) {
     const target = document.querySelector(targetId);
     if (!target) return;
 
     const startY = window.scrollY;
-    const targetY = target.offsetTop; // ★ここが重要
+    const targetY = target.offsetTop;
     const distance = targetY - startY;
     let startTime = null;
 
-    function ease(t) {
+    function easeInOut(t) {
       return t < 0.5
         ? 2 * t * t
         : 1 - Math.pow(-2 * t + 2, 2) / 2;
     }
 
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = ease(progress);
+    function step(time) {
+      if (!startTime) startTime = time;
+      const progress = Math.min((time - startTime) / duration, 1);
+      const eased = easeInOut(progress);
       window.scrollTo(0, startY + distance * eased);
       if (progress < 1) requestAnimationFrame(step);
     }
@@ -39,6 +45,9 @@ export function initTab() {
     requestAnimationFrame(step);
   }
 
+  /* =========================
+     Events
+  ========================= */
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
@@ -47,11 +56,14 @@ export function initTab() {
       tab.classList.add("is-active");
       moveSlider(tab);
 
-      smoothScrollTo(tab.getAttribute("href"));
+      // 🔽 ここで速度を自由に変えられる
+      smoothScrollTo(tab.getAttribute("href"), 1500);
     });
   });
 
-  // 初期化（描画後）
+  /* =========================
+     Init
+  ========================= */
   requestAnimationFrame(() => {
     tabs[0].classList.add("is-active");
     moveSlider(tabs[0]);
