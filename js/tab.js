@@ -2,33 +2,31 @@ export function initTab() {
   const container = document.querySelector(".tabs-container");
   if (!container) return;
 
-  const tabs = [...container.querySelectorAll(".tab")];
+  const tabs = Array.from(container.querySelectorAll(".tab"));
   const slider = container.querySelector(".tab-slider");
   if (!tabs.length || !slider) return;
 
   /* =========================
-     Slider
+     Slider（fixed対応）
   ========================= */
   function moveSlider(target) {
-    const rect = target.getBoundingClientRect();
-    const parentRect = container.getBoundingClientRect();
-    slider.style.width = rect.width + "px";
-    slider.style.left = rect.left - parentRect.left + "px";
+    slider.style.width = target.offsetWidth + "px";
+    slider.style.left = target.offsetLeft + "px";
   }
 
   /* =========================
-     Smooth Scroll（速度制御可）
+     Smooth Scroll（速度制御）
   ========================= */
   function smoothScrollTo(targetId, duration = 1200) {
     const target = document.querySelector(targetId);
     if (!target) return;
 
-    const startY = window.scrollY;
+    const startY = window.pageYOffset;
     const targetY = target.offsetTop;
     const distance = targetY - startY;
     let startTime = null;
 
-    function easeInOut(t) {
+    function ease(t) {
       return t < 0.5
         ? 2 * t * t
         : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -37,8 +35,7 @@ export function initTab() {
     function step(time) {
       if (!startTime) startTime = time;
       const progress = Math.min((time - startTime) / duration, 1);
-      const eased = easeInOut(progress);
-      window.scrollTo(0, startY + distance * eased);
+      window.scrollTo(0, startY + distance * ease(progress));
       if (progress < 1) requestAnimationFrame(step);
     }
 
@@ -54,10 +51,9 @@ export function initTab() {
 
       tabs.forEach(t => t.classList.remove("is-active"));
       tab.classList.add("is-active");
-      moveSlider(tab);
 
-      // 🔽 ここで速度を自由に変えられる
-      smoothScrollTo(tab.getAttribute("href"), 1500);
+      moveSlider(tab);
+      smoothScrollTo(tab.getAttribute("href"), 1500); // ← 速度ここ
     });
   });
 
