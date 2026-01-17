@@ -46,10 +46,8 @@ if (isMobile) {
     import("./style/tab.css"),
     import("../js/tab.js")
   ])
-    .then(([, , , tabModule]) => {
-      window.addEventListener("DOMContentLoaded", () => {
-        tabModule.initTab?.();
-      });
+    .then(([, , , tab]) => {
+      tab.initTab?.();
     })
     .catch(err => console.error("mobile tab error:", err));
 }
