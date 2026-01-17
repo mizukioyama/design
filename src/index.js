@@ -11,6 +11,9 @@ const page = document.body.dataset.page;
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/fonts/fonts.css";
 
+// audio
+import "./assets/audio/tukinohikari.mp3";
+
 // common PC styles
 import "./style/all.css";
 import "./style/menu.css";
@@ -43,8 +46,10 @@ if (isMobile) {
     import("./style/tab.css"),
     import("../js/tab.js")
   ])
-    .then(([, , , tab]) => {
-      tab.initTab?.();
+    .then(([, , , tabModule]) => {
+      window.addEventListener("DOMContentLoaded", () => {
+        tabModule.initTab?.();
+      });
     })
     .catch(err => console.error("mobile tab error:", err));
 }

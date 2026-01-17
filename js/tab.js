@@ -14,6 +14,25 @@ export function initTab() {
     slider.style.left = rect.left - parentRect.left + "px";
   }
 
+  function smoothScroll(targetEl, duration = 600) {
+    const target = document.querySelector(targetEl);
+    if (!target) return;
+
+    const startY = window.pageYOffset;
+    const targetY = target.getBoundingClientRect().top + startY;
+    const distance = targetY - startY;
+    let startTime = null;
+
+    function animate(time) {
+      if (!startTime) startTime = time;
+      const progress = Math.min((time - startTime) / duration, 1);
+      window.scrollTo(0, startY + distance * progress);
+      if (progress < 1) requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  }
+
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
