@@ -42,11 +42,11 @@ if (isMobile) {
     import("./style/mobile-page.css"),
     import("./style/tab.css"),
     import("../js/tab.js")
-  ]).then(([, , , tabModule]) => {
-    window.addEventListener("DOMContentLoaded", () => {
-      tabModule.initTab?.();
-    });
-  }).catch(err => console.error("mobile tab error:", err));
+  ])
+    .then(([, , , tab]) => {
+      tab.initTab?.();
+    })
+    .catch(err => console.error("mobile tab error:", err));
 }
 
 // ===============================
@@ -60,16 +60,18 @@ switch (page) {
     Promise.all([
       import("../js/card.js"),
       import("../js/se-list.js")
-    ]).then(([card, list]) => {
-      card.initCard?.();
+    ])
+      .then(([card, list]) => {
+        card.initCard?.();
 
-      // ※ mobile tab.js と役割が被らないよう注意
-      if (!isMobile) {
-        list.initTab?.();
-      }
-    }).catch(err => {
-      console.error("service page js error:", err);
-    });
+        // PCのみ tab 制御
+        if (!isMobile) {
+          list.initTab?.();
+        }
+      })
+      .catch(err => {
+        console.error("service page js error:", err);
+      });
     break;
 
   case "contact":
@@ -88,27 +90,3 @@ switch (page) {
     import("../js/hearing.js");
     break;
 }
-
-// ===============================
-// Assets
-// ===============================
-import "./assets/images/pd.ico";
-import "./assets/images/logo-tyep.png";
-import "./assets/images/pd-bg-img.jpg";
-import "./assets/images/pd-body-bg.jpg";
-
-// bg
-import "./assets/images/text-gold.png";
-import "./assets/images/text-bronze.png";
-
-// section
-import "./assets/images/bg-a.png";
-import "./assets/images/bg-c.png";
-import "./assets/images/bg-s.png";
-import "./assets/images/bg-p.png";
-
-// mobile
-import "./assets/images/mobile-main-second.png";
-
-// audio
-import "./assets/audio/tukinohikari.mp3";
