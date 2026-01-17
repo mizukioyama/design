@@ -9,17 +9,23 @@ export function initTab() {
   function moveSlider(target) {
     const rect = target.getBoundingClientRect();
     const parentRect = container.getBoundingClientRect();
-
     slider.style.width = `${rect.width}px`;
     slider.style.left = `${rect.left - parentRect.left}px`;
   }
 
-  function smoothScrollTo(target, duration = 800) {
-    const targetEl = document.querySelector(target);
-    if (!targetEl) return;
+  function smoothScrollTo(targetSelector, duration = 1000) {
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
 
-    const startY = window.pageYOffset;
-    const targetY = targetEl.getBoundingClientRect().top + startY;
+    const startY =
+      window.scrollY ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    const targetY =
+      target.getBoundingClientRect().top + startY;
+
     const distance = targetY - startY;
     let startTime = null;
 
@@ -32,8 +38,13 @@ export function initTab() {
     function animate(time) {
       if (!startTime) startTime = time;
       const progress = Math.min((time - startTime) / duration, 1);
-      window.scrollTo(0, startY + distance * easeInOut(progress));
-      if (progress < 1) requestAnimationFrame(animate);
+      const eased = easeInOut(progress);
+
+      window.scrollTo(0, startY + distance * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
     }
 
     requestAnimationFrame(animate);
@@ -42,6 +53,7 @@ export function initTab() {
   tabs.forEach(tab => {
     tab.addEventListener("click", e => {
       e.preventDefault();
+
       tabs.forEach(t => t.classList.remove("is-active"));
       tab.classList.add("is-active");
       moveSlider(tab);
