@@ -19,7 +19,7 @@ html {
 
 .tabs-container {
     display: flex;
-    position: relative;
+    position: fixed;
     bottom: 40px; /* 表示したいY位置（調整可能） */
     left: -100%;  /* 初期位置：画面外 */
     transform: translateX(0%); /* 初期位置用 */
