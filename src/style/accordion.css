@@ -84,7 +84,7 @@
     position: absolute;
     width: 2em;
     height: 2em;
-    top: 20px;
+    top: -20px;
     left: 0;
     align-content: center;
 }
@@ -129,6 +129,10 @@
     .accordion-header:active {
         box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
         background-color: rgba(205, 205, 205, 0.45);
+    }
+
+    .fa {
+        top: 20px;
     }
 
     .accordion-item {
