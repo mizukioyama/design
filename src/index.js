@@ -35,45 +35,46 @@ import "../js/modal.js";
 import "../js/google.js";
 
 // ===============================
-// Mobile common (ALL PAGES)
+// Device detection
 // ===============================
 const isMobile = window.matchMedia("(max-width: 599px)").matches;
-
-if (isMobile) {
-  Promise.all([
-    import("./style/mobile-all.css"),
-    import("./style/mobile-page.css"),
-    import("./style/tab.css"),
-    import("../js/tab.js")
-  ])
-    .then(([, , , tab]) => {
-      tab.initTab?.();
-    })
-    .catch(err => console.error("mobile tab error:", err));
-}
 
 // ===============================
 // Page specific
 // ===============================
 switch (page) {
-  case "service":
+  case "service": {
+    // styles
     import("./style/card.css");
     import("./style/se-list.css");
 
-    Promise.all([
-      import("../js/card.js"),
-      import("../js/se-list.js")
-    ]).then(([card, list]) => {
-      card.initCard?.();
+    if (isMobile) {
+      // mobile TAB
+      Promise.all([
+        import("./style/mobile-all.css"),
+        import("./style/mobile-page.css"),
+        import("./style/tab.css"),
+        import("../js/tab.js")
+      ]).then(([, , , tab]) => {
+        tab.initTab?.(".mobile-only");
+      }).catch(err => {
+        console.error("mobile tab error:", err);
+      });
 
-      // ※ mobile tab.js と役割が被らないよう注意
-      if (!isMobile) {
-        list.initTab?.();
-      }
-    }).catch(err => {
-      console.error("service page js error:", err);
-    });
+    } else {
+      // PC
+      Promise.all([
+        import("../js/card.js"),
+        import("../js/se-list.js")
+      ]).then(([card, list]) => {
+        card.initCard?.();
+        list.initTab?.(".pc-only");
+      }).catch(err => {
+        console.error("service pc js error:", err);
+      });
+    }
     break;
+  }
 
   case "contact":
     import("./style/form.css");

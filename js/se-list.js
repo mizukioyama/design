@@ -1,6 +1,13 @@
-export function initTab() {
-  const tabs = document.querySelectorAll(".list-tab");
-  const contents = document.querySelectorAll(".tab-container");
+export function initTab(scopeSelector = document) {
+  const root =
+    typeof scopeSelector === "string"
+      ? document.querySelector(scopeSelector)
+      : scopeSelector;
+
+  if (!root) return;
+
+  const tabs = root.querySelectorAll(".list-tab");
+  const contents = root.querySelectorAll(".tab-container");
 
   if (!tabs.length || !contents.length) return;
 
@@ -12,8 +19,8 @@ export function initTab() {
       tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
-      document
-        .getElementById("content--" + key)
+      root
+        .querySelector(`#content--${key}`)
         ?.classList.add("show");
     });
   });
