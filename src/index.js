@@ -4,12 +4,17 @@
 const page = document.body.dataset.page;
 
 // ===============================
-// Global assets
+// Global assets (ALL PAGES)
 // ===============================
+
+// icons & fonts
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/fonts/fonts.css";
+
+// audio
 import "./assets/audio/tukinohikari.mp3";
 
+// common PC styles
 import "./style/all.css";
 import "./style/menu.css";
 import "./style/cursor.css";
@@ -19,6 +24,7 @@ import "./style/footer.css";
 import "./style/accordion.css";
 import "./style/modal.css";
 
+// common JS
 import "../js/section.js";
 import "../js/cursor.js";
 import "../js/accordion.js";
@@ -29,41 +35,45 @@ import "../js/modal.js";
 import "../js/google.js";
 
 // ===============================
+// Mobile common (ALL PAGES)
+// ===============================
+const isMobile = window.matchMedia("(max-width: 599px)").matches;
+
+if (isMobile) {
+  Promise.all([
+    import("./style/mobile-all.css"),
+    import("./style/mobile-page.css"),
+    import("./style/tab.css"),
+    import("../js/tab.js")
+  ])
+    .then(([, , , tab]) => {
+      tab.initTab?.();
+    })
+    .catch(err => console.error("mobile tab error:", err));
+}
+
+// ===============================
 // Page specific
 // ===============================
 switch (page) {
-  case "service": {
-    // styles
+  case "service":
     import("./style/card.css");
     import("./style/se-list.css");
-    import("./style/tab.css");
 
-    // scripts（両方読み込む）
     Promise.all([
-      import("../js/tab.js"),
-      import("../js/se-list.js"),
-      import("../js/card.js")
-    ]).then(([tab, list, card]) => {
-      document.addEventListener("DOMContentLoaded", () => {
+      import("../js/card.js"),
+      import("../js/se-list.js")
+    ]).then(([card, list]) => {
+      card.initCard?.();
 
-        // mobile tabs
-        document.querySelectorAll(".tab-wrap.mobile-only").forEach(wrap => {
-          tab.initTab?.(wrap);
-        });
-
-        // pc tabs
-        document.querySelectorAll(".tab-wrap.pc-only").forEach(wrap => {
-          list.initTab?.(wrap);
-        });
-
-        card.initCard?.();
-      });
+      // ※ mobile tab.js と役割が被らないよう注意
+      if (!isMobile) {
+        list.initTab?.();
+      }
     }).catch(err => {
-      console.error("service page error:", err);
+      console.error("service page js error:", err);
     });
-
     break;
-  }
 
   case "contact":
     import("./style/form.css");
