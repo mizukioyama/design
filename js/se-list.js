@@ -1,13 +1,9 @@
-export function initTab(scopeSelector = document) {
-  const root =
-    typeof scopeSelector === "string"
-      ? document.querySelector(scopeSelector)
-      : scopeSelector;
+export function initTab(wrapperSelector) {
+  const wrapper = document.querySelector(wrapperSelector);
+  if (!wrapper) return;
 
-  if (!root) return;
-
-  const tabs = root.querySelectorAll(".list-tab");
-  const contents = root.querySelectorAll(".tab-container");
+  const tabs = wrapper.querySelectorAll(".list-tab");
+  const contents = wrapper.querySelectorAll(".tab-container");
 
   if (!tabs.length || !contents.length) return;
 
@@ -19,8 +15,8 @@ export function initTab(scopeSelector = document) {
       tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
-      root
-        .querySelector(`#content--${key}`)
+      wrapper
+        .querySelector("#content--" + key)
         ?.classList.add("show");
     });
   });

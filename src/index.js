@@ -4,17 +4,12 @@
 const page = document.body.dataset.page;
 
 // ===============================
-// Global assets (ALL PAGES)
+// Global assets
 // ===============================
-
-// icons & fonts
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/fonts/fonts.css";
-
-// audio
 import "./assets/audio/tukinohikari.mp3";
 
-// common PC styles
 import "./style/all.css";
 import "./style/menu.css";
 import "./style/cursor.css";
@@ -24,7 +19,6 @@ import "./style/footer.css";
 import "./style/accordion.css";
 import "./style/modal.css";
 
-// common JS
 import "../js/section.js";
 import "../js/cursor.js";
 import "../js/accordion.js";
@@ -35,7 +29,7 @@ import "../js/modal.js";
 import "../js/google.js";
 
 // ===============================
-// Device detection
+// Mobile判定
 // ===============================
 const isMobile = window.matchMedia("(max-width: 599px)").matches;
 
@@ -44,35 +38,26 @@ const isMobile = window.matchMedia("(max-width: 599px)").matches;
 // ===============================
 switch (page) {
   case "service": {
-    // styles
     import("./style/card.css");
     import("./style/se-list.css");
+    import("./style/tab.css");
 
+    // tab（PC / mobile 切り替え）
     if (isMobile) {
-      // mobile TAB
-      Promise.all([
-        import("./style/mobile-all.css"),
-        import("./style/mobile-page.css"),
-        import("./style/tab.css"),
-        import("../js/tab.js")
-      ]).then(([, , , tab]) => {
-        tab.initTab?.(".mobile-only");
-      }).catch(err => {
-        console.error("mobile tab error:", err);
+      import("../js/tab.js").then(tab => {
+        tab.initTab("#wrap");
       });
-
     } else {
-      // PC
-      Promise.all([
-        import("../js/card.js"),
-        import("../js/se-list.js")
-      ]).then(([card, list]) => {
-        card.initCard?.();
-        list.initTab?.(".pc-only");
-      }).catch(err => {
-        console.error("service pc js error:", err);
+      import("../js/se-list.js").then(list => {
+        list.initTab("#wrap");
       });
     }
+
+    // card
+    import("../js/card.js").then(card => {
+      card.initCard?.();
+    });
+
     break;
   }
 
