@@ -1,4 +1,4 @@
-export function initTab(wrapper) {
+export function initTab(wrapper = document) {
   const tabs = wrapper.querySelectorAll(".list-tab");
   const contents = wrapper.querySelectorAll(".tab-container");
 
