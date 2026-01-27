@@ -1,8 +1,4 @@
-// ../js/tab.js
-export function initTab(wrapperSelector = "#wrap") {
-  const wrapper = document.querySelector(wrapperSelector);
-  if (!wrapper) return;
-
+export function initTab(wrapper) {
   const tabs = wrapper.querySelectorAll(".list-tab");
   const contents = wrapper.querySelectorAll(".tab-container");
 

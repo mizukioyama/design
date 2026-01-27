@@ -29,33 +29,37 @@ import "../js/modal.js";
 import "../js/google.js";
 
 // ===============================
-// Mobile判定
-// ===============================
-const isMobile = window.matchMedia("(max-width: 599px)").matches;
-
-// ===============================
 // Page specific
 // ===============================
 switch (page) {
   case "service": {
+    // styles
     import("./style/card.css");
     import("./style/se-list.css");
     import("./style/tab.css");
 
-    // tab（PC / mobile 切り替え）
-    if (isMobile) {
-      import("../js/tab.js").then(tab => {
-        tab.initTab("#wrap");
-      });
-    } else {
-      import("../js/se-list.js").then(list => {
-        list.initTab("#wrap");
-      });
-    }
+    // scripts（両方読み込む）
+    Promise.all([
+      import("../js/tab.js"),
+      import("../js/se-list.js"),
+      import("../js/card.js")
+    ]).then(([tab, list, card]) => {
+      document.addEventListener("DOMContentLoaded", () => {
 
-    // card
-    import("../js/card.js").then(card => {
-      card.initCard?.();
+        // mobile tabs
+        document.querySelectorAll(".tab-wrap.mobile-only").forEach(wrap => {
+          tab.initTab?.(wrap);
+        });
+
+        // pc tabs
+        document.querySelectorAll(".tab-wrap.pc-only").forEach(wrap => {
+          list.initTab?.(wrap);
+        });
+
+        card.initCard?.();
+      });
+    }).catch(err => {
+      console.error("service page error:", err);
     });
 
     break;
