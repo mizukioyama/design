@@ -1,6 +1,6 @@
-export function initTab(wrapper = document) {
-  const tabs = wrapper.querySelectorAll(".list-tab");
-  const contents = wrapper.querySelectorAll(".tab-container");
+export function initTab() {
+  const tabs = document.querySelectorAll(".list-tab");
+  const contents = document.querySelectorAll(".tab-container");
 
   if (!tabs.length || !contents.length) return;
 
@@ -12,8 +12,8 @@ export function initTab(wrapper = document) {
       tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
-      wrapper
-        .querySelector("#content--" + key)
+      document
+        .getElementById("content--" + key)
         ?.classList.add("show");
     });
   });
