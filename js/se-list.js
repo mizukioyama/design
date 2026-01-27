@@ -1,4 +1,5 @@
-export function initTab(wrapperSelector) {
+// ../js/tab.js
+export function initTab(wrapperSelector = "#wrap") {
   const wrapper = document.querySelector(wrapperSelector);
   if (!wrapper) return;
 
