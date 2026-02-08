@@ -60,19 +60,16 @@ switch (page) {
     import("./style/card.css");
     import("./style/se-list.css");
 
-    Promise.all([
-      import("../js/card.js"),
-      import("../js/se-list.js")
-    ]).then(([card, list]) => {
-      card.initCard?.();
+Promise.all([
+  import("../js/card.js"),
+  import("../js/se-list.js")
+]).then(([card, list]) => {
 
-      // ※ mobile tab.js と役割が被らないよう注意
-      if (!isMobile) {
-        list.initTab?.();
-      }
-    }).catch(err => {
-      console.error("service page js error:", err);
-    });
+  card.initCard?.();
+
+  list.initTab?.(); // ← 両方で実行
+});
+
     break;
 
   case "contact":
