@@ -63,16 +63,17 @@ switch (page) {
     Promise.all([
       import("../js/card.js"),
       import("../js/se-list.js")
-    ]).then(([card, list]) => {
-      card.initCard?.();
+    ])
+      .then(([card, list]) => {
+        card.initCard?.();
 
-      // ※ mobile tab.js と役割が被らないよう注意
-      if (!isMobile) {
+        // ✅ mobile / PC 両方で必ず実行
         list.initTab?.();
-      }
-    }).catch(err => {
-      console.error("service page js error:", err);
-    });
+      })
+      .catch(err => {
+        console.error("service page js error:", err);
+      });
+
     break;
 
   case "contact":
