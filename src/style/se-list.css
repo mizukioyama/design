@@ -66,7 +66,6 @@
    overflow-y: scroll;
    
    align-items: start;
-   justify-content: center;
    border: 1px solid var(--border);
    border-top: 0;
 }
@@ -74,7 +73,7 @@
 .tab-container.show {
    display: block;
    margin: 0 auto;
-   padding: 0 2rem 2rem;
+   padding: 0 15vmin 2rem;
    animation: fadeIn 0.6s ease-in-out forwards;
 }
 
