@@ -20,7 +20,7 @@
    backdrop-filter: blur(3px);*/
 }
 
-.list-tab {
+.list-tab ,.mobile-list-tab {
    font-family: serif;
    font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
    text-shadow: 1px 1px 2px #010101;
@@ -39,11 +39,11 @@
    animation: moveBackground 0.55s linear infinite;*/
 }
 
-.list-tab::before {
+.list-tab::before, .mobile-list-tab::before {
    border-left: 1px solid;
 }
 
-.list-tab::after {
+.list-tab::after, .mobile-list-tab::after {
    border-bottom: 1px solid;
 }
 
@@ -58,7 +58,7 @@
    animation: moveBackground 0.55s linear infinite;*/
 }
 
-.tab-container {
+.tab-container, .mobile-tab-container {
    display: none;
    width: 100%;
    height: 45vmin;
@@ -70,7 +70,7 @@
    border-top: 0;
 }
 
-.tab-container.show {
+.tab-container.show, .mobile-tab-container.show {
    display: block;
    margin: 0 auto;
    padding: 0 15vmin 2rem;
@@ -97,12 +97,12 @@
    cursor: pointer;
 }*/
 
-#wrap .tab-container h3 {
+#wrap .tab-container h3, .mobile-tab-container h3 {
    text-shadow: 1px 1px 2px #010101;
    margin-top: 8rem;
 }
 
-#wrap .tab-container ol h4 {
+#wrap .tab-container ol h4, .mobile-tab-container ol h4 {
    font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
    font-weight: 500;
    color: var(--bg);
@@ -112,12 +112,12 @@
    text-shadow: 1px 1px 1px #010101;
 }
 
-#wrap .tab-container ol {
+#wrap .tab-container ol, .mobile-tab-container ol {
    padding-bottom: 3.5rem;
    border-bottom: 10px solid var(--border);
 }
 
-#wrap .tab-container li {
+#wrap .tab-container li, .mobile-tab-container li  {
    font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
    font-weight: 700;
    text-shadow: 1px 1px 1px #010101;
@@ -205,7 +205,7 @@
       border-bottom: 1px solid var(--border);
    }
 
-   .list-tab {
+   .mobile-list-tab {
       font-size: clamp(1.8rem, 1.571rem + 1.14vw, 2rem);
       width: 100%;
       height: 12vmin;
@@ -217,12 +217,12 @@
       height: 20vmin;
    }
 
-   .tab-container.show {
+   .mobile-tab-container.show {
       width: 100%;
       padding: 1em 0.5em 0;
    }
 
-   .tab-container {
+   .mobile-tab-container {
       height: 75vmin;
    }
 
@@ -231,18 +231,18 @@
       margin-bottom: 5rem;
    }*/
 
-   #wrap .container h3 {
+   #wrap .mobile-container h3 {
       font-size: clamp(2rem, 1.739rem + 1.31vw, 2.8rem);
       text-shadow: 1px 1px 2px #010101;
       margin-top: 4rem;
    }
 
-   #wrap .container h3 span {
+   #wrap .mobile-container h3 span {
       content: "（税込み）";
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
    }
 
-   #wrap .container ol h4 {
+   #wrap .mobile-container ol h4 {
       font-size: clamp(1.8rem, 1.571rem + 1.14vw, 2rem);
       font-weight: 500;
       color: var(--bg);
@@ -252,12 +252,12 @@
       text-shadow: 1px 1px 1px #010101;
    }
 
-   #wrap .container ol {
+   #wrap .mobile-container ol {
       padding-bottom: 3.5rem;
       border-bottom: 10px solid var(--border);
    }
 
-   #wrap .container li {
+   #wrap .mobile-container li {
       font-size: clamp(1.4rem, 1.171rem + 1.14vw, 1.6rem);
       font-weight: 700;
       text-shadow: none;
