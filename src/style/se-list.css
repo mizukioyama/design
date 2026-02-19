@@ -58,7 +58,7 @@
    animation: moveBackground 0.55s linear infinite;*/
 }
 
-.tab-container, .sp-tab-container {
+.tab-content, .sp-tab-container {
    display: none;
    width: 100%;
    height: 45vmin;
@@ -70,7 +70,7 @@
    border-top: 0;
 }
 
-.tab-container.show, .sp-tab-container.show {
+.tab-content.show, .sp-tab-container.show {
    display: block;
    margin: 0 auto;
    padding: 0 15vmin 2rem;
@@ -97,12 +97,12 @@
    cursor: pointer;
 }*/
 
-#wrap .tab-container h3, .sp-tab-container h3 {
+#wrap .tab-content h3, .sp-tab-container h3 {
    text-shadow: 1px 1px 2px #010101;
    margin-top: 8rem;
 }
 
-#wrap .tab-container ol h4, .sp-tab-container ol h4 {
+#wrap .tab-content ol h4, .sp-tab-container ol h4 {
    font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
    font-weight: 500;
    color: var(--bg);
@@ -112,12 +112,12 @@
    text-shadow: 1px 1px 1px #010101;
 }
 
-#wrap .tab-container ol, .sp-tab-container ol {
+#wrap .tab-content ol, .sp-tab-container ol {
    padding-bottom: 3.5rem;
    border-bottom: 10px solid var(--border);
 }
 
-#wrap .tab-container li, .sp-tab-container li  {
+#wrap .tab-content li, .sp-tab-container li  {
    font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
    font-weight: 700;
    text-shadow: 1px 1px 1px #010101;

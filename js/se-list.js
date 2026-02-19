@@ -1,7 +1,7 @@
 export function initTab() {
   const run = () => {
     const tabs = document.querySelectorAll(".list-tab");
-    const contents = document.querySelectorAll(".tab-container");
+    const contents = document.querySelectorAll(".tab-content");
 
     if (!tabs.length || !contents.length) return;
 
@@ -12,22 +12,19 @@ export function initTab() {
       tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
+
       document
         .getElementById("content--" + key)
         ?.classList.add("show");
     };
 
-    // 🔹 初期表示（超重要）
     const firstTab =
       document.querySelector(".list-tab.selected") || tabs[0];
 
     activate(firstTab);
 
-    // 🔹 click
     tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        activate(tab);
-      });
+      tab.addEventListener("click", () => activate(tab));
     });
   };
 
