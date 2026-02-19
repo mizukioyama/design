@@ -44,8 +44,7 @@ if (isMobile) {
     import("./style/mobile-all.css"),
     import("./style/mobile-page.css"),
     import("./style/tab.css"),
-    import("../js/tab.js"),
-    import("../js/se-list-sp.js")
+    import("../js/tab.js")
   ])
     .then(([, , , tab]) => {
       tab.initTab?.();
@@ -63,6 +62,7 @@ switch (page) {
 
     Promise.all([
       import("../js/card.js"),
+      import("../js/se-list-sp.js"),
       import("../js/se-list.js")
     ])
       .then(([card, list]) => {
