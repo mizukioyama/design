@@ -58,6 +58,10 @@
    animation: moveBackground 0.55s linear infinite;*/
 }
 
+.container {
+   border: 1px solid var(--border);
+}
+
 .tab-content, .sp-tab-container {
    display: none;
    width: 100%;
@@ -66,8 +70,6 @@
    overflow-y: scroll;
    
    align-items: start;
-   border: 1px solid var(--border);
-   border-top: 0;
 }
 
 .tab-content.show, .sp-tab-container.show {
