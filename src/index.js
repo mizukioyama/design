@@ -44,7 +44,8 @@ if (isMobile) {
     import("./style/mobile-all.css"),
     import("./style/mobile-page.css"),
     import("./style/tab.css"),
-    import("../js/tab.js")
+    import("../js/tab.js"),
+    import("../js/se-list-sp.js")
   ])
     .then(([, , , tab]) => {
       tab.initTab?.();
