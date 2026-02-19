@@ -58,7 +58,7 @@
    animation: moveBackground 0.55s linear infinite;*/
 }
 
-.container {
+.tab-container {
    border: 1px solid var(--border);
 }
 
