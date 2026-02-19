@@ -1,4 +1,4 @@
-export function initTab() {
+export function initSpTab() {
   const run = () => {
     const tabs = document.querySelectorAll(".sp-list-tab");
     const contents = document.querySelectorAll(".sp-tab-content");
@@ -11,18 +11,20 @@ export function initTab() {
       tabs.forEach(t => t.classList.remove("sp-selected"));
       tab.classList.add("sp-selected");
 
-      contents.forEach(c => c.classList.remove("show"));
+      contents.forEach(c => c.classList.remove("sp-show"));
 
       document
         .getElementById("sp-content--" + key)
-        ?.classList.add("show");
+        ?.classList.add("sp-show");
     };
 
+    // 初期表示
     const firstTab =
       document.querySelector(".sp-list-tab.sp-selected") || tabs[0];
 
     activate(firstTab);
 
+    // クリック
     tabs.forEach(tab => {
       tab.addEventListener("click", () => activate(tab));
     });
