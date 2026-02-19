@@ -8,8 +8,8 @@ export function initTab() {
     const activate = tab => {
       const key = tab.id.replace("sp-li-tab--", "");
 
-      tabs.forEach(t => t.classList.remove("sp-selected"));
-      tab.classList.add("sp-selected");
+      tabs.forEach(t => t.classList.remove("selected"));
+      tab.classList.add("selected");
 
       contents.forEach(c => c.classList.remove("show"));
 
@@ -19,7 +19,7 @@ export function initTab() {
     };
 
     const firstTab =
-      document.querySelector(".sp-list-tab.sp-selected") || tabs[0];
+      document.querySelector(".sp-list-tab.selected") || tabs[0];
 
     activate(firstTab);
 
