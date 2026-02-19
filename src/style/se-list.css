@@ -212,7 +212,7 @@
       height: 18vmin;
    }
 
-   .selected {
+   .sp-selected {
       font-size: clamp(2rem, 1.543rem + 2.29vw, 2.4rem);
       height: 20vmin;
    }
