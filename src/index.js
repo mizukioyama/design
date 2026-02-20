@@ -62,7 +62,6 @@ switch (page) {
 
     Promise.all([
       import("../js/card.js"),
-      import("../js/se-list-sp.js"),
       import("../js/se-list.js")
     ])
       .then(([card, list]) => {

@@ -1,30 +1,39 @@
 export function initTab() {
   const run = () => {
-    const tabs = document.querySelectorAll(".list-tab");
-    const contents = document.querySelectorAll(".tab-content");
+    const wraps = document.querySelectorAll(".tab-wrap");
+    if (!wraps.length) return;
 
-    if (!tabs.length || !contents.length) return;
+    wraps.forEach(wrap => {
+      const tabs = wrap.querySelectorAll(".list-tab");
+      const contents = wrap.querySelectorAll(".tab-content");
 
-    const activate = tab => {
-      const key = tab.id.replace("li-tab--", "");
+      if (!tabs.length || !contents.length) return;
 
-      tabs.forEach(t => t.classList.remove("selected"));
-      tab.classList.add("selected");
+      const activate = tab => {
+        const key = tab.id
+          .replace("sp-li-tab--", "")
+          .replace("li-tab--", "");
 
-      contents.forEach(c => c.classList.remove("show"));
+        tabs.forEach(t => t.classList.remove("selected"));
+        tab.classList.add("selected");
 
-      document
-        .getElementById("content--" + key)
-        ?.classList.add("show");
-    };
+        contents.forEach(c => c.classList.remove("show"));
 
-    const firstTab =
-      document.querySelector(".list-tab.selected") || tabs[0];
+        contents.forEach(c => {
+          if (c.id.includes(key)) {
+            c.classList.add("show");
+          }
+        });
+      };
 
-    activate(firstTab);
+      const firstTab =
+        wrap.querySelector(".list-tab.selected") || tabs[0];
 
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => activate(tab));
+      activate(firstTab);
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => activate(tab));
+      });
     });
   };
 
