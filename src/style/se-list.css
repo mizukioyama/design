@@ -101,9 +101,16 @@
 }*/
 
 .tab-wrap .tab-content h3 {
-   text-shadow: 1px 1px 2px #010101;
+   color: var(--text);
+   font-weight: 600;
    margin-top: 8rem;
 }
+
+.tab-wrap .tab-content h3 span {
+      content: "（税込み）";
+      font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
+      color: var(--text);
+   }
 
 .tab-wrap .tab-content ol h4 {
    font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
@@ -123,7 +130,7 @@
 .tab-wrap .tab-content li {
    font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
    font-weight: 700;
-   text-shadow: 1px 1px 1px #010101;
+   color: var(--text);
    margin-top: 0.5rem;
    padding: 0 1rem 0;
    letter-spacing: 0.025rem;
@@ -220,12 +227,12 @@
       height: 20vmin;
    }
 
-   .sp-tab-content.sp-show {
+   .tab-content.show {
       width: 100%;
-      padding: 1em 0.5em 0;
+      padding: 5vmin 5vmin 0;
    }
 
-   .sp-tab-content {
+   .tab-tab-content {
       height: 75vmin;
    }
 
@@ -234,18 +241,15 @@
       margin-bottom: 5rem;
    }*/
 
-   .tab-wrap .sp-content h3 {
-      font-size: clamp(2rem, 1.739rem + 1.31vw, 2.8rem);
-      text-shadow: 1px 1px 2px #010101;
-      margin-top: 4rem;
+   .tab-wrap .tab-content h3 {
+      font-size: clamp(2.4rem, 1.712rem + 3.44vw, 3rem);
    }
 
-   .tab-wrap .sp-content h3 span {
-      content: "（税込み）";
+   .tab-wrap .tab-content h3 span {
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
    }
 
-   .tab-wrap .sp-content ol h4 {
+   .tab-wrap .tab-content ol h4 {
       font-size: clamp(1.8rem, 1.571rem + 1.14vw, 2rem);
       font-weight: 500;
       color: var(--bg);
@@ -255,12 +259,12 @@
       text-shadow: 1px 1px 1px #010101;
    }
 
-   .tab-wrap .sp-content ol {
+   .tab-wrap .tab-content ol {
       padding-bottom: 3.5rem;
       border-bottom: 10px solid var(--border);
    }
 
-   .tab-wrap .sp-content li {
+   .tab-wrap .tab-content li {
       font-size: clamp(1.4rem, 1.171rem + 1.14vw, 1.6rem);
       font-weight: 700;
       text-shadow: none;
