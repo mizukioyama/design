@@ -22,7 +22,7 @@
 
 .list-tab {
    font-family: serif;
-   font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
+   font-size: clamp(1.8rem, 0.542rem + 1.55vw, 2.4rem);
    text-shadow: 1px 1px 2px #010101;
    width: calc(38% - 50px);
    height: 7vmin;
@@ -48,7 +48,7 @@
 }
 
 .selected {
-   font-size: clamp(2rem, 1.333rem + 0.89vw, 2.4rem);
+   font-size: clamp(2.4rem, 1.561rem + 1.03vw, 2.8rem);
    font-weight: 600;
    width: calc(42% - 10px);
    height: 9.25vmin;
@@ -101,19 +101,20 @@
 }*/
 
 .tab-wrap .tab-content h3 {
+   font-size: clamp(3rem, 1.323rem + 2.06vw, 3.8rem);
    color: var(--text);
    font-weight: 600;
    margin-top: 8rem;
 }
 
-.tab-wrap .tab-content h3 span {
+.tab-wrap .tab-content h3::before {
       content: "（税込み）";
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
       color: var(--text);
    }
 
 .tab-wrap .tab-content ol h4 {
-   font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
+   font-size: clamp(1.8rem, 0.542rem + 1.55vw, 2.4rem);
    font-weight: 500;
    color: var(--bg);
    margin-top: 4rem;
@@ -128,7 +129,7 @@
 }
 
 .tab-wrap .tab-content li {
-   font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
+   font-size: clamp(1.6rem, 0.761rem + 1.03vw, 2rem);
    font-weight: 700;
    color: var(--text);
    margin-top: 0.5rem;
@@ -243,9 +244,10 @@
 
    .tab-wrap .tab-content h3 {
       font-size: clamp(2.4rem, 1.712rem + 3.44vw, 3rem);
+      margin-top: 0;
    }
 
-   .tab-wrap .tab-content h3 span {
+   .tab-wrap .tab-content h3::before {
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
    }
 
