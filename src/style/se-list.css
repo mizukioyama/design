@@ -105,6 +105,7 @@
    color: var(--text);
    font-weight: 600;
    margin-top: 8rem;
+   position: relative;
 }
 
 .tab-wrap .tab-content h3::after {
@@ -112,6 +113,9 @@
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
       color: var(--text);
       letter-spacing: 0.5rem;
+      position: absolute;
+      right: 0;
+      bottom: -15px;
    }
 
 .tab-wrap .tab-content ol h4 {
@@ -234,7 +238,7 @@
       padding: 5vmin 5vmin 0;
    }
 
-   .tab-tab-content {
+   .tab-content {
       height: 75vmin;
    }
 
