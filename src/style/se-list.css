@@ -107,10 +107,11 @@
    margin-top: 8rem;
 }
 
-.tab-wrap .tab-content h3::before {
-      content: "（税込み）";
+.tab-wrap .tab-content h3::after {
+      content: "(税込み)";
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
       color: var(--text);
+      letter-spacing: 0.5rem;
    }
 
 .tab-wrap .tab-content ol h4 {
@@ -247,7 +248,7 @@
       margin-top: 0;
    }
 
-   .tab-wrap .tab-content h3::before {
+   .tab-wrap .tab-content h3::after {
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
    }
 
