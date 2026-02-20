@@ -1,36 +1,34 @@
 export function initTab() {
-  const run = () => {
-    const wraps = document.querySelectorAll(".tab-wrap");
-    if (!wraps.length) return;
+  const init = () => {
+    const tabWraps = document.querySelectorAll(".tab-wrap");
+    if (!tabWraps.length) return;
 
-    wraps.forEach(wrap => {
+    tabWraps.forEach(wrap => {
       const tabs = wrap.querySelectorAll(".list-tab");
       const contents = wrap.querySelectorAll(".tab-content");
 
       if (!tabs.length || !contents.length) return;
 
       const activate = tab => {
-        const key = tab.id
-          .replace("sp-li-tab--", "")
-          .replace("li-tab--", "");
+        const key = tab.dataset.tab;
 
         tabs.forEach(t => t.classList.remove("selected"));
         tab.classList.add("selected");
 
-        contents.forEach(c => c.classList.remove("show"));
-
         contents.forEach(c => {
-          if (c.id.includes(key)) {
-            c.classList.add("show");
-          }
+          c.classList.toggle(
+            "show",
+            c.dataset.content === key
+          );
         });
       };
 
-      const firstTab =
+      // 初期表示
+      const first =
         wrap.querySelector(".list-tab.selected") || tabs[0];
+      activate(first);
 
-      activate(firstTab);
-
+      // クリックイベント
       tabs.forEach(tab => {
         tab.addEventListener("click", () => activate(tab));
       });
@@ -38,8 +36,8 @@ export function initTab() {
   };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
+    document.addEventListener("DOMContentLoaded", init);
   } else {
-    run();
+    init();
   }
 }
