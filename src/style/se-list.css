@@ -100,12 +100,12 @@
    cursor: pointer;
 }*/
 
-#tab-wrap .tab-content h3 {
+.tab-wrap .tab-content h3 {
    text-shadow: 1px 1px 2px #010101;
    margin-top: 8rem;
 }
 
-#tab-wrap .tab-content ol h4 {
+.tab-wrap .tab-content ol h4 {
    font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
    font-weight: 500;
    color: var(--bg);
@@ -115,12 +115,12 @@
    text-shadow: 1px 1px 1px #010101;
 }
 
-#tab-wrap .tab-content ol {
+.tab-wrap .tab-content ol {
    padding-bottom: 3.5rem;
    border-bottom: 10px solid var(--border);
 }
 
-#tab-wrap .tab-content li {
+.tab-wrap .tab-content li {
    font-size: clamp(1.6rem, 1.267rem + 0.44vw, 1.8rem);
    font-weight: 700;
    text-shadow: 1px 1px 1px #010101;
@@ -131,13 +131,13 @@
 }
 
 @media screen and (min-width: 600px) and (max-width: 1299px) {
-   .service #tab-wrap {
+   .service .tab-wrap {
       width: 80%;
       margin-top: -0.65vmin;
       padding: 2em;
    }
 
-   #tab-wrap p {
+   .tab-wrap p {
       width: 65vmin;
       font-size: clamp(1rem, calc(1rem + 1vw), 1.2rem);
       margin: 2% auto 0;
@@ -192,7 +192,7 @@
 /*================= SPレイアウト ==================*/
 
 @media only screen and (max-width: 599px) {
-   .service #tab-wrap {
+   .service .tab-wrap {
       width: 80%;
       padding: 0 0.25rem;
       margin-top: 2rem;
@@ -234,18 +234,18 @@
       margin-bottom: 5rem;
    }*/
 
-   #tab-wrap .sp-content h3 {
+   .tab-wrap .sp-content h3 {
       font-size: clamp(2rem, 1.739rem + 1.31vw, 2.8rem);
       text-shadow: 1px 1px 2px #010101;
       margin-top: 4rem;
    }
 
-   #tab-wrap .sp-content h3 span {
+   .tab-wrap .sp-content h3 span {
       content: "（税込み）";
       font-size: clamp(1.2rem, 1.069rem + 0.65vw, 1.6rem);
    }
 
-   #tab-wrap .sp-content ol h4 {
+   .tab-wrap .sp-content ol h4 {
       font-size: clamp(1.8rem, 1.571rem + 1.14vw, 2rem);
       font-weight: 500;
       color: var(--bg);
@@ -255,12 +255,12 @@
       text-shadow: 1px 1px 1px #010101;
    }
 
-   #tab-wrap .sp-content ol {
+   .tab-wrap .sp-content ol {
       padding-bottom: 3.5rem;
       border-bottom: 10px solid var(--border);
    }
 
-   #tab-wrap .sp-content li {
+   .tab-wrap .sp-content li {
       font-size: clamp(1.4rem, 1.171rem + 1.14vw, 1.6rem);
       font-weight: 700;
       text-shadow: none;
