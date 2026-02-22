@@ -50,7 +50,8 @@ form input[type="radio"]::before {
 
 .radio-group {
    display: grid;
-   align-items: center;
+   align-items: self-start;
+   grid-template-columns: auto auto;
 }
 
 .form-row {
