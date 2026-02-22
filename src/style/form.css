@@ -49,9 +49,26 @@ form input[type="radio"]::before {
 }
 
 .radio-group {
-   display: grid;
-   align-items: self-start;
-   grid-template-columns: auto auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* 1つ目（タイトル）を横幅いっぱいに */
+.radio-group > label:first-child {
+  grid-column: 1 / -1;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .form-row {
