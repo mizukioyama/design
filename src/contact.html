@@ -153,7 +153,7 @@
 
           <label>
             <input type="radio" name="consent" value="上記以外">
-            上記以外の問い合わせ
+            上記以外の問合わせ
           </label>
         </fieldset>
       </div>
@@ -172,7 +172,7 @@
           </div>
 
           <div class="form-field col x-50">
-            <input type="text" id="companyName" name="companyName" class="input-text" required>
+            <input type="text" id="companyName" name="companyName" class="input-text">
             <label for="companyName" class="label">Business</label>
           </div>
 
@@ -693,7 +693,7 @@
           <li>
             <h4>Webサイトの構成案（ページ内容案）</h4>
             デザイン作成前にコンテンツの全体像を把握するため。
-            必要なページリスト（例：トップページ、サービスページ、会社概要、お問い合わせ）。
+            必要なページリスト（例：トップページ、サービスページ、会社概要、お問合わせ）。
             各ページに載せたい情報の概要。
             <br>
             制作側でワイヤーフレーム（ページのレイアウト案）を作成しますので、それを基に修正案や意見をいただきます。
@@ -728,8 +728,8 @@
             各サービスのログイン情報や管理者権限が必要になる場合があります。
           </li>
           <li>
-            <h4>お問い合わせメール設定情報</h4>
-            サイトに問い合わせフォームを設置するため。
+            <h4>お問合わせメール設定情報</h4>
+            サイトに問合わせフォームを設置するため。
             使用するメールアドレス、送信先が複数ある場合、その振り分けルール。
             <br>
             ドメインメール（例: info@example.com）が推奨されます。
@@ -821,18 +821,27 @@
         <div class="form-col">
 
           <div class="form-field col x-50">
+            <legend>
+            お名前 <span>必須</span>
+            </legend>
             <input type="text" id="name" name="name" class="input-text" required>
             <label for="name" class="label">Name</label>
           </div>
 
           <div class="form-field col x-50">
+            <legend>
+            メールアドレス <span>必須</span>
+            </legend>
             <input type="email" id="email" name="email" class="input-text" required>
             <label for="email" class="label">Address</label>
           </div>
 
           <div class="form-field col x-50">
-            <input type="text" id="companyName" name="companyName" class="input-text" required>
-            <label for="companyName" class="label">Business</label>
+            <legend>
+            WebサイトURL <span>任意</span>
+            </legend>
+            <input type="url" id="url" name="url" class="input-text">
+            <label for="url" class="label">Business</label>
           </div>
 
         </div>
@@ -861,12 +870,15 @@
 
           <label>
             <input type="radio" name="consent" value="上記以外">
-            上記以外の問い合わせ
+            上記以外の問合わせ
           </label>
         </fieldset>
       </div>
 
         <div class="form-field col x-100">
+          <legend>
+            お問合わせ内容/備考<span>(先に伝えておきたいことがあればご記入ください。)</span>
+          </legend>
           <textarea id="message" name="message" class="input-text" required></textarea>
           <label for="message" class="label">Text</label>
         </div>
