@@ -115,6 +115,10 @@ input:-webkit-autofill:focus {
    display: contents;
 }
 
+.contact-form span:last-child {
+   color: var(--text);
+}
+
 .get-in-touch {
    margin: 0 auto;
    position: relative;
