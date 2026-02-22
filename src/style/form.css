@@ -1,237 +1,295 @@
+/* ベース設定: チェックボックス・ラジオ共通 */
 :where(input[type="checkbox"], input[type="radio"]) {
    font-size: inherit;
    line-height: inherit;
    margin: 0;
-   block-size: 2.4rem;
-   inline-size: 2.4rem;
+   block-size: 1rem;
+   inline-size: 1rem;
    vertical-align: sub;
 }
 
-form .radio-group label {
-   margin: 0.3rem;
+/* ラジオボタンは非表示（見た目はラベルで表現） */
+input[type="radio"] {
+   display: none;
+   opacity: 0;
 }
 
-form input[type="checkbox"],
-form input[type="radio"] {
+/* ラベルのベーススタイル */
+.radio-group label {
    position: relative;
-   appearance: none;
-   width: 1.4em;
-   height: 1.4em;
-   border-radius: 3px;
-   margin-right: 0.8vmin;
-   background: var(--bg);
-   box-shadow: inset 1px 1px 7px rgba(0, 0, 0, 0.75);
+   display: inline-block;
+   font-size: 1rem;
+   font-weight: 300;
+   opacity: 0.5;
+   cursor: pointer;
+   transition: opacity 0.3s ease;
 }
-/* チェックされたらラジオボタン内側を表示 */
+
+.radio-group label:hover {
+   opacity: 0.7;
+}
+
+/* 選択されたときだけラベルにスタイルを適用 */
+input[type="radio"]:checked+label {
+   opacity: 1;
+}
+
+/* チェックボックス */
+form input[type="checkbox"] {
+   height: 1.45rem;
+   border-radius: 2px;
+   opacity: 0.8;
+}
+
+/* チェックボックスは四角い中身 */
+form input[type="checkbox"]::before {
+   width: 1rem;
+   height: 1rem;
+   border-radius: 0;
+   opacity: 0;
+}
+
+/* チェックされたら内側を表示 */
 form input[type="checkbox"]:checked::before,
 form input[type="radio"]:checked::before {
    opacity: 1;
 }
-form input[type="checkbox"]::before,
-form input[type="radio"]::before {
-   content: "";
-   background-color: var(--text);
-   box-shadow: 0 1px 2px 0px rgba(46, 46, 46, 0.45);
-   border-radius: 3px;
-   margin: auto;
-   opacity: 0;
-   position: absolute;
-   top: 0.14em;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   width: 0.7em;
-   height: 0.7em;
+
+.contact-form {
+   display: grid;
+   position: relative;
+   /*width: 65%;
+   margin: 60vmin auto 0;*/
+   width: 50%;
+   margin-top: 60vmin;
 }
 
-.radio-group label {
-   font-size: 1.8rem;
+label {
+   font-size: 1.2rem;
 }
 
 .form-row {
-   display: flex;
-   justify-content: space-between;
+   width: 100%;
+   font-weight: 200;
+   margin-top: 1vmin;
+}
+
+.form-col {
+   width: 100%;
 }
 
 .col {
-   /*float: left;*/
    flex: 1;
-   font-weight: 600;
+   width: auto;
 }
 
-.col.x-50 {
-   padding: 0 1.5rem 0;
-   margin-top: 1.5rem;
-}
-
+.col.x-50,
 .col.x-100 {
-   padding-right: 1.5rem;
-   margin-top: 1.5rem;
+   margin-top: 2rem;
 }
 
-/*input:-internal-autofill-selected,
-.contact-form .input-text {
-   background-color: rgba(46, 46, 46, 0.25);
-}*/
+.col.x-50:nth-of-type(1) {
+   margin-top: 1rem;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
    transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
-.contact-form {
-   width: calc(60% - 145px);
-   position: absolute;
-   top: 25%;
-   right: 17.5%;
-}
-
-.contact-form span {
-   font-size: 1.2rem;
-   color: var(--accent);
-   display: contents;
-}
-
+/*.content-wrapper {
+   width: 70%;
+   margin: 0 auto;
+}*/
 .get-in-touch {
    margin: 0 auto;
    position: relative;
 }
 
-.form-field {
+.contact-form .form-field {
    position: relative;
 }
 
 .contact-form .input-text {
-   font-size: 2rem;
-   font-family: sans-serif;
-   font-weight: 400;
-   position: relative;
-   color: var(--text);
+   font-size: 1.2rem;
+   font-weight: 300;
+   color: var(--inv);
    display: block;
-   padding-left: 2rem;
-   width: 270px;
-   height: 75px;
+   width: 100%;
+   height: 42pt;
    border-width: 0;
-   background-color: var(--bg);
-   box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.95);
+   padding-left: 2rem;
+   background: rgba(0, 0, 0, 0.5);
+   backdrop-filter: blur(10px);
+   box-shadow: inset hsla(0, 0%, 0%, 1) 0px 1px 4px 2px;
+   border-radius: 0;
 }
 
 .contact-form #message {
-   width: 100%;
-   height: 251.3px;
+   height: 150pt;
    margin: 0 auto;
    padding-top: 1rem;
+   box-shadow: inset hsla(0, 0%, 0%, 1) 0px 1px 4px 2px;
 }
 
-.input-text:focus {
+.contact-form .input-text:focus {
    outline: none;
 }
 
-.input-text:focus + .label,
-.input-text.not-empty + .label {
-  transform: translateY(-2rem);
-  font-size: 1.2rem;
+.contact-form .input-text:focus+.label,
+.contact-form .input-text:focus+.label span,
+.contact-form .input-text.not-empty+.label {
+   transform: translateY(-1.75rem);
+   opacity: 0.7;
 }
 
 .contact-form .label {
-   font-family: sans-serif;
-   font-size: clamp(1.6rem, 1.181rem + 0.52vw, 1.8rem);
-   font-weight: 400;
-   color: rgba(10, 10, 10, 0.65);
-   /*-webkit-text-stroke: 0.5px rgba(50, 50, 50, 0.5);*/
+   font-weight: 300;
+   color: rgba(246, 246, 246, 0.85);
    position: absolute;
-   left: 1.4em;/*rem？*/
-   top: 0.5rem;
-   pointer-events: none;
-   transition:
-      transform 0.2s ease-in-out,
-      font-size 0.2s ease-in-out;
+   left: 1vmin;
+   top: 0.75rem;
+   transition: all 0.3s ease-in-out;
+}
+
+.contact-form .label span {
+   font-size: 1.2rem;
+   color: rgba(146, 146, 146, 0.5);
+   color: var(--accent);
+   letter-spacing: -4px;
+   transition: all 0.3s ease;
 }
 
 .contact-form .submit-btn {
-   font-family: sans-serif;
-   font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
-   width: 42.5%;
-   height: 35pt;
+   font-size: 1.2rem;
+   font-weight: 300;
+   width: 100%;
+   height: 40pt;
    display: inline-block;
-   color: var(--bg);
-   background-color: rgba(65, 65, 65, 0.5);
+   color: var(--inv);
+   background: rgba(0, 0, 0, 1);
+   backdrop-filter: blur(10px);
    text-transform: uppercase;
    letter-spacing: 0.2rem;
    line-height: 1.5rem;
-   padding-top: 0.5rem;
-   margin-top: 1.5rem;
-   margin-bottom: 1.5rem;
+   padding: 0.5rem 0;
+   margin-top: 2rem;
    border: none;
-   box-shadow: inset 0px 0px 5.5px rgba(0, 0, 0, 0.95);
+   box-shadow: inset hsla(0, 0%, 0%, 1) 0px 0px 100px 15px;
    cursor: pointer;
    transition: all 0.35s ease;
 }
 
 .contact-form .submit-btn:hover {
-   color: var(--text);
-   background: rgba(160, 113, 113, 0.6);
-   border: none;
+   color: rgba(160, 160, 160);
+   background: var(--inv);
+   box-shadow: inset hsla(0, 0%, 0%, 1) 0px 1px 5px 0px;
+}
+
+.radio-group,
+.align-center h3 {
+   font-weight: 200;
+   color: var(--inv);
+   width: fit-content;
+   line-height: 1.5;
+   z-index: 1;
+}
+
+.radio-group {
+   font-size: clamp(1.8rem, 1.467rem + 0.44vw, 2rem);
+   display: flex;
+   gap: 1.2rem;
+   /*margin-top: 10vmin;*/
 }
 
 .align-center {
-   font-size: clamp(1rem, 0.667rem + 0.44vw, 1.2rem);
-   font-family: sans-serif;
-   display: flex;
+   width: 100%;
    align-items: center;
-   justify-content: space-between;
-   padding: 0 1.6rem;
-   gap: 1.75em;
-   line-height: 1;
+   margin-top: 3em;
+}
+
+.align-center:last-child {
+   margin-top: 1.5rem;
+}
+
+.align-center p {
+   /*display: flex;
+   gap: 0.25rem;*/
+   align-items: center;
+   margin: 0;
+   line-height: 1.6;
+   letter-spacing: 0.015rem;
 }
 
 /*===================== モーダルウィンドウ =====================*/
-/*未*/
-form .modal {
+#thanksModal {
    display: none;
-   position: fixed;
-   z-index: 1000;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   overflow: auto;
-   margin-top: 25vmin;
+   opacity: 0;
+   overflow: hidden;
+   position: absolute;
+   z-index: 10099;
+   background: rgba(119, 119, 119, 0.25);
+   transition: opacity 0.4s ease-in-out;
+   width: 95vw;
+   /*height: 120svh;*/
+   min-height: 100vh;
+   /*top: 50%;*/
+   left: 50%;
+   align-content: center;
+   transform: translate(-75%, -10%);
+   -webkit-backdrop-filter: blur(10px);
+   backdrop-filter: blur(10px);
+   border: 1px solid var(--sub);
+   border-radius: 0;
 }
 
-form .modal-content {
-   width: 70vmin;
-   height: 45vmin;
+/* モーダルが表示されるとき */
+#thanksModal.show {
+   opacity: 1;
+}
+
+/* モーダルコンテンツのアニメーション */
+#thanksModal .modal-content {
+   position: relative;
+   width: 75vw;
+   width: -webkit-fill-available;
+   height: 70vh;
    margin: 0 auto;
-   padding: 20px;
-   color: var(--text);
-   background: rgba(255, 255, 255, 0.25);
-   box-shadow: 0 2px 3px 0 rgba(46, 46, 46, 0.57);
-   backdrop-filter: blur(6.5px);
-   border: 1px solid var(--border);
-   border-radius: 10px;
+   /*top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);*/
+   background: #000;
+   box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 1.95), 1px 1px 3px 0 rgba(0, 0, 0, 0.84);
+   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.84);
    display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: column;
+   z-index: 11000;
 }
 
-form .modal-content p {
-   font-size: clamp(1.6rem, calc(1.6rem + 0.5vw), 1.8rem);
-   color: var(--bg);
+/* モーダル表示時 */
+.align-center h3 {
+   font-size: clamp(2rem, 1.333rem + 0.89vw, 2.4rem);
 }
 
-form .close {
-   color: var(--text);
-   font-size: 25pt;
+#thanksModal .modal-content p {
+   width: fit-content;
+   min-width: 50%;
+   line-height: 2;
+}
+
+#thanksModal .close {
+   font-size: 2rem;
    font-weight: bold;
    float: right;
    position: absolute;
-   top: 20%;
-   right: 20%;
+   bottom: 12vmin;
+   right: 50%;
 }
 
-form .close:hover,
-form .close:focus {
+#thanksModal .close:hover,
+#thanksModal .close:focus {
    color: var(--accent);
    text-shadow: 0 1px 2px var(--text);
    text-decoration: none;
@@ -239,258 +297,204 @@ form .close:focus {
 }
 
 /*===================== モーダルウィンドウ =====================*/
+@media screen and (min-width: 601px) and (max-width: 1299px) {
 
-@media screen and (min-width: 600px) and (max-width: 1299px) {
-   .form-row {
-      display: block;
-   }
-
-   .col {
-      padding: 0;
-   }
-
-   .col.x-50 {
-      padding: 0;
-      margin: 0.5rem auto 1rem;
-   }
-
+   .col.x-50,
    .col.x-100 {
-      padding: 0;
-      margin-top: 1.5rem;
-   }
-
-   .contact-form {
-      width: 80%;
-      padding: 0.5rem 1rem;
-      margin: 0 auto;
-      position: relative;
-      right: 0;
-      top: 5%;
-   }
-   .contact-form .input-text {
-      font-size: clamp(1.8rem, 1.343rem + 2.29vw, 2.2rem);
       width: 100%;
-      height: 35pt;
-      padding-left: 1rem;
-      background-color: var(--bg);
-      border: 1px solid var(--border);
+      padding: 0;
+      margin: 1.5rem auto;
    }
 
-   .contact-form #message {
-      height: 70pt;
+   .contact-form .input-text:focus+.label,
+   .contact-form .input-text.not-empty+.label {
+      transform: translateY(-2.5rem);
+   }
+
+   .contact-form #message,
+   .contact-form .submit-btn,
+   .contact-form .label {
+      font-size: clamp(1.6rem, 1.256rem + 0.92vw, 2rem);
+   }
+
+   .contact-form .input-text {
+      font-size: clamp(1.8rem, 1.628rem + 0.46vw, 2rem);
+      height: 40pt;
+      padding-left: 1rem;
    }
 
    .contact-form .label {
-      font-size: clamp(1.4rem, 1.171rem + 1.14vw, 1.6rem);
-      color: rgba(217, 217, 217, 0.75);
       left: 2.75%;
       top: 13.75%;
-      line-height: 2rem;
+      line-height: 2;
    }
 
-   .contact-form .label-test {
+   .contact-form .label-text {
       top: 6.5%;
    }
 
    .contact-form .submit-btn {
-      font-size: clamp(2rem, 1.771rem + 1.14vw, 2.2rem);
-      width: 100%;
-      height: 30pt;
+      height: 28pt;
       padding: 0;
       margin: 0;
       margin-bottom: 0.5rem;
       margin-top: 1rem;
+      box-shadow: inset hsla(0, 0%, 0%, 1) 0px 0px 25px 20px;
    }
 
-   .contact-form .submit-btn:active {
-      color: var(--text);
-      background: var(--accent);
-   }
-
-   .align-center {
-      display: grid;
-      align-items: center;
-      justify-content: flex-start;
+   .align-center:last-child {
+      margin: 0;
    }
 
    .align-center p {
-      font-size: clamp(1rem, 0.771rem + 1.14vw, 1.2rem);
-      width: 100%;
-      margin: 0;
-      margin-top: 1rem;
-      line-height: 1.2;
       text-align: left;
    }
 
-   .align-center p a {
-      font-size: clamp(1.6rem, 1.143rem + 2.29vw, 2rem);
-      margin-top: 0;
-      padding: 0.5rem;
-      border: 0;
+   /*===================== モーダルウィンドウ =====================*/
+   #thanksModal {
+      width: 100%;
+      top: 0%;
+      left: 0%;
+      transform: translate(0%, 0%);
    }
 
+   #thanksModal .modal-content {
+      width: 90%;
+      height: 70vh;
+      transform: translate(-50%, -50%);
+      background: rgba(245, 252, 246, 0.83);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6.5px);
+      border: 1px solid var(--bg);
+   }
+
+   #thanksModal.show {
+      width: 100%;
+      transform: translate(0%, 0%);
+      background: rgba(255, 255, 200, 0.25);
+   }
 }
 
 
-@media screen and (max-width: 599px) {
-   .radio-group {
-      display: grid;
-      margin: 1rem 0;
+@media screen and (max-width: 600px) {
+   form input[type="checkbox"] {
+      height: 1rem;
    }
-   .radio-group label {
-      font-size: 1.4rem;
-      margin: 0.5rem 0;
+
+   .contact-form {
+      width: 100%;
+      margin: 15vmin auto 0;
    }
+
    .form-row {
       display: block;
    }
-   .contact-form span {
-      font-size: 1.2rem;
-   }
 
    .col {
-      font-size: 1.4rem;
       padding: 0;
    }
 
    .col.x-50,
+   .col.x-50:nth-child(1),
    .col.x-100 {
       padding: 0;
-      margin: 0;
-      margin-bottom: 1rem;
+      margin-top: 1.8rem;
    }
 
-   .contact-form {
-      width: 80%;
-      padding: 0;
-      margin: 0 auto;
-      position: relative;
-      right: 0;
-      top: 5vmin;
+   .contact-form .input-text:focus+.label,
+   .contact-form .input-text.not-empty+.label {
+      transform: translateY(-1.6rem);
    }
 
+   /*   .contact-form .submit-btn,
+   .align-center h3 {
+      font-size: clamp(1.8rem, 1.571rem + 1.14vw, 2rem);
+   }*/
    .contact-form .input-text {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--text);
-      width: 100%;
+      font-size: 1rem;
       height: 40pt;
       padding-left: 1rem;
-      box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.75);
-      border-radius: 8px;
+      background: var(--sub);
    }
 
    .contact-form #message {
-      height: 50vmin;
+      line-height: 1.4;
+      letter-spacing: 0.01rem;
    }
 
+.contact-form .label span {
+   font-size: 1rem;
+}
+
+   /*.contact-form .label,
+   .align-center p,
+   .radio-group {
+      font-size: clamp(1.4rem, 1.171rem + 1.14vw, 1.6rem);
+   }*/
    .contact-form .label {
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: rgba(46, 46, 46, 0.45);
-      text-align: left;
-      left: 0.75em;
-      top: 3.5rem;
-      line-height: 2rem;
-      letter-spacing: -0.05rem;
+      font-size: 0.9rem;
+      left: 2.75%;
+      top: 5.75%;
+      line-height: 2;
+   }
+
+   .contact-form .label-text {
+      line-height: 1.2;
    }
 
    .contact-form .submit-btn {
-      font-size: 1.8rem;
-      font-weight: 600;
-      width: 100%;
-      height: 25pt;
-      color: var(--text);
-      background: var(--bg);
-      mix-blend-mode: color-burn;
+      font-size: 1rem;
+      height: 35pt;
       padding: 0;
       margin: 0;
-      margin-bottom: 0.5rem;
-      margin-top: 1rem;
-      border-radius: 8px;
-      box-shadow: inset 1px 1px 7px rgba(0, 0, 0, 0.75);
+      margin-top: 10vmin;
    }
 
    .contact-form .submit-btn:active {
-      color: var(--text);
-      background: var(--border);
+      text-shadow: 0 2px 4px #000;
+      box-shadow: inset hsla(0, 0%, 0%, 1) 0px 0px 95px 0px;
+      box-shadow: inset hsl(0deg 0% 19.05%) 0px 0px 55px 0px;
    }
 
-   .align-center {
-      display: grid;
-      align-items: center;
-   }
-   .align-center:last-child {
-      display: block;
+   .radio-group {
+      justify-content: center;
    }
 
    .align-center p {
-      margin: 0;
-      margin-top: 1rem;
-      line-height: 1.2;
-      text-align: left;
-   }
-   .align-center p a,
-   .align-center p a::before,
-   .align-center p a::after {
-      border: none;
-   }
-
-   .align-center p a {
-      font-size: clamp(1.6rem, 1.143rem + 2.29vw, 2rem);
-      display: inline;
-      margin-top: 0;
-      padding: 0.5rem;
+      display: inline-block;
    }
 
    /*===================== モーダルウィンドウ =====================*/
-   .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      padding-top: 20%;
+   #thanksModal {
+      width: 100vw;
+      height: 120vh;
+      left: 0%;
+      padding: 0;
+      transform: translate(-50%, -50%);
+      /*background: rgba(246, 246, 246, 0.2);*/
    }
 
-   .modal-content {
-      width: 55%;
-      height: 350px;
-      margin: 0 auto;
-      padding: 20px;
-      color: var(--text);
-      background: rgba(245, 252, 246, 0.13);
-      box-shadow: 0 3px 5px 0 rgba(46, 46, 46, 0.67);
-      backdrop-filter: blur(6.5px);
-      border: 1px solid var(--bg);
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+   #thanksModal .modal-content {
+      width: 96svw;
+      height: 95svh;
+      /*top: 50%;*/
+      top: -70vmin;
+      left: 50%;
+      transform: translate(-50%, 70vmin);
    }
 
-   .close {
-      color: var(--base);
-      font-size: 25pt;
-      font-weight: bold;
-      float: right;
-      position: absolute;
-      top: 20%;
-      right: 20%;
+   #thanksModal .modal-content p {
+      width: 80%;
    }
 
-   .close:hover,
-   .close:focus {
-      color: var(--main);
-      text-shadow: 0 1px 2px var(--base);
-      text-decoration: none;
-      cursor: pointer;
+   #thanksModal.show {
+      transform: translate(-10%, 20%);
+   }
+
+   #thanksModal .close {
+      right: 45%;
+      font-size: 1.2rem;
    }
 
    /*===================== モーダルウィンドウ =====================*/
-
 }
