@@ -359,6 +359,7 @@ form .close:focus {
 @media screen and (max-width: 599px) {
    .radio-group {
       margin: 1rem 0;
+      grid-template-columns: none;
    }
    .radio-group label {
       font-size: 1.4rem;
