@@ -51,7 +51,7 @@ form input[type="radio"]::before {
 .radio-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 1rem;
 }
 
 /* 1つ目（タイトル）を横幅いっぱいに */
@@ -359,6 +359,7 @@ form .close:focus {
 @media screen and (max-width: 599px) {
    .radio-group {
       margin: 1rem 0;
+      gap: 0;
       grid-template-columns: none;
    }
    .radio-group label {
