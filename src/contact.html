@@ -128,6 +128,31 @@
               method="POST" target="hidden_iframe" onsubmit="submitted=true;">
 
               <div class="form-row">
+
+                  <div class="form-field col align-center">
+                    <div class="radio-group">
+                      <label for="name-title">
+                        相談内容<span>必須</span>
+                      </label>
+                      <label>
+                        <input type="radio" name="consent" value="相談" required>
+                        Web制作の相談
+                      </label>
+                      <label>
+                        <input type="radio" name="consent" value="見積">
+                        見積の作成
+                      </label>
+                      <label>
+                        <input type="radio" name="consent" value="リニューアル">
+                        サイトリニューアル
+                      </label>
+                      <label>
+                        <input type="radio" name="consent" value="上記以外">
+                        上記以外の問い合わせ
+                      </label>
+                    </div>
+                  </div>
+
                 <div class="form-col">
                   <div class="form-field col x-50">
                     <input type="text" id="name" name="name" class="input-text" required>
@@ -140,31 +165,6 @@
                   <div class="form-field col x-50">
                     <input type="text" id="companyName" name="companyName" class="input-text" required>
                     <label for="companyName" class="label">Business</label>
-                  </div>
-                  <div class="form-field col align-center">
-                    <div class="radio-group">
-                      <label for="name-title">相談内容<span>必須</span></label>
-                      <label>
-                        <input type="radio" name="consent" value="相談" required>
-                        制作についての相談
-                      </label>
-                      <label>
-                        <input type="radio" name="consent" value="見積">
-                        見積の作成
-                      </label>
-                      <label>
-                        <input type="radio" name="consent" value="制作">
-                        Webサイト制作
-                      </label>
-                      <label>
-                        <input type="radio" name="consent" value="リニューアル">
-                        サイトリニューアル
-                      </label>
-                      <label>
-                        <input type="radio" name="consent" value="上記以外">
-                        上記以外の問い合わせ
-                      </label>
-                    </div>
                   </div>
                 </div>
 
