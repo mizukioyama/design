@@ -48,6 +48,11 @@ form input[type="radio"]::before {
    font-size: 1.8rem;
 }
 
+.radio-group {
+   display: grid;
+   align-items: center;
+}
+
 .form-row {
    display: flex;
    justify-content: space-between;
@@ -90,11 +95,6 @@ input:-webkit-autofill:focus {
    font-size: 1.2rem;
    color: var(--accent);
    display: contents;
-}
-
-.align-center {
-   display: grid;
-   align-items: center;
 }
 
 .get-in-touch {
@@ -294,7 +294,7 @@ form .close:focus {
       line-height: 2rem;
    }
 
-   .contact-form .label-test {
+   .label-test {
       top: 6.5%;
    }
 
@@ -340,7 +340,6 @@ form .close:focus {
 
 @media screen and (max-width: 599px) {
    .radio-group {
-      display: grid;
       margin: 1rem 0;
    }
    .radio-group label {
