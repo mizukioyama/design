@@ -16,14 +16,11 @@
     <!-- Content-Security-Policy --><!-- Content-Security-Policy（frame-ancestorsは除外） -->
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'unsafe-inline';
-    style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline';
-    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:;
-    img-src 'self' https://mizukioyama.github.io data:;
-    connect-src 'self' https://mizukioyama.github.io https://script.google.com https://script.googleusercontent.com https://cdn.jsdelivr.net https://fonts.googleapis.com;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self' https://mizukioyama.github.io;
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data:;
     ">
     <!-- OGP 基本(sns) -->
     <meta property="og:title" content="Mizuki Oyama｜Webデザイナー・こだわりのデザイン制作">
@@ -132,9 +129,9 @@
       <!-- 相談内容 -->
       <div class="form-field col align-center">
         <fieldset class="radio-group">
-          <legend>
+          <p>
             相談内容 <span>必須</span>
-          </legend>
+          </p>
 
           <label>
             <input type="radio" name="consent" value="相談" required>
@@ -821,25 +818,25 @@
         <div class="form-col">
 
           <div class="form-field col x-50">
-            <legend>
+            <p>
             お名前（ふりがな）<span>必須</span>
-            </legend>
+            </p>
             <input type="text" id="name" name="name" class="input-text" required>
             <label for="name" class="label">例：浦島 太郎（うらしま たろう）</label>
           </div>
 
           <div class="form-field col x-50">
-            <legend>
+            <p>
             メールアドレス <span>必須</span>
-            </legend>
+            </p>
             <input type="email" id="email" name="email" class="input-text" required>
             <label for="email" class="label">例：oyama@gmail.com</label>
           </div>
 
           <div class="form-field col x-50">
-            <legend>
+            <p>
             WebサイトURL <span>任意</span>
-            </legend>
+            </p>
             <input type="url" id="url" name="url" class="input-text">
             <label for="url" class="label">例：https://mizukioyama.github.io/design/</label>
           </div>
@@ -849,9 +846,9 @@
       <!-- 相談内容 -->
       <div class="form-field col align-center">
         <fieldset class="radio-group">
-          <legend>
+          <p>
             相談内容 <span>必須</span>
-          </legend>
+          </p>
 
           <label>
             <input type="radio" name="consent" value="相談" required>
@@ -876,9 +873,9 @@
       </div>
 
         <div class="form-field col x-100">
-          <legend>
+          <p>
             お問合わせ内容/備考<span>（伝えたいことを記入してください）</span>
-          </legend>
+          </p>
           <textarea id="message" name="message" class="input-text" required></textarea>
           <label for="message" class="label">例：制作の依頼を検討しているのですが、～～</label>
         </div>

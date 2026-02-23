@@ -21,10 +21,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  inputs.forEach(input => {
-    toggleLabel(input);
-    input.addEventListener("input", () => toggleLabel(input));
-  });
+function toggleLabel(input) {
+  if (input.value.trim() !== "") {
+    input.classList.add("not-empty");
+  } else {
+    input.classList.remove("not-empty");
+  }
+}
+
+inputs.forEach(input => {
+  toggleLabel(input);
+
+  input.addEventListener("input", () => toggleLabel(input));
+  input.addEventListener("blur", () => toggleLabel(input));
+});
+
+// オートフィル対策
+window.addEventListener("load", () => {
+  inputs.forEach(input => toggleLabel(input));
+});
 
   // フォーム送信処理
   if (contactForm) {
