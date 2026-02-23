@@ -106,17 +106,22 @@ input:-webkit-autofill:focus {
 }
 
 /* form ttl */
-.form-field p {
+#section--second .form-field p {
    margin-bottom: 1rem;
    font-size: 2rem;
 }
 
-.section .form-field p {
+.section #section--second .form-field p {
    top: 0;
    left: 0;
+   width: fit-content;
 }
 
-.section .form-field p::after {
+.section #section--second .align-center:last-child p {
+   font-size: 1.6rem;
+}
+
+.section #section--second .form-field p::after {
    content: "";
    position: absolute;
    top: 100%;
