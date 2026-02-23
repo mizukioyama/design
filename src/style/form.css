@@ -111,14 +111,19 @@ input:-webkit-autofill:focus {
    font-size: 2rem;
 }
 
+.section p {
+   top: 0;
+   left: 0;
+}
+
 .section p::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: -3px;
-    width: 5vmin;
-    height: 1px;
-    border-top: 1px solid;
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: -3px;
+   width: 5vmin;
+   height: 1px;
+   border-top: 1px solid;
 }
 
 .x-50 span,
