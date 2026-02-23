@@ -111,9 +111,12 @@ input:-webkit-autofill:focus {
    font-size: 2rem;
 }
 
-.section #section--second .form-field p {
+.section .form-field p {
    top: 0;
    left: 0;
+}
+
+.section #section--second .form-field p {
    width: fit-content;
 }
 
