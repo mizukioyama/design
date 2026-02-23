@@ -417,6 +417,7 @@ form .close:focus {
 
    .x-100 span {
       font-size: 1.2rem;
+      display: block;
       position: absolute;
       bottom: 0;
       right: 0;
