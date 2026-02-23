@@ -222,7 +222,7 @@ input:-webkit-autofill:focus {
 }
 
 .align-center {
-   font-size: clamp(1rem, 0.667rem + 0.44vw, 1.2rem);
+   font-size: 1.6rem;
    font-family: sans-serif;
    display: flex;
    align-items: center;
@@ -416,7 +416,7 @@ form .close:focus {
    }
 
    .x-100 span {
-      font-size: 12rem;
+      font-size: 1.2rem;
       position: absolute;
       bottom: 0;
       right: 0;
