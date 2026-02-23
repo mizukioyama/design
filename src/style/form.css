@@ -111,12 +111,12 @@ input:-webkit-autofill:focus {
    font-size: 2rem;
 }
 
-.section p {
+.section .form-field p {
    top: 0;
    left: 0;
 }
 
-.section p::after {
+.section .form-field p::after {
    content: "";
    position: absolute;
    top: 100%;
@@ -409,7 +409,7 @@ form .close:focus {
    }
 
    .form-field p {
-      font-size: 14rem;
+      font-size: 1.4rem;
       margin-bottom: 0;
       width: 100%;
       position: relative;
