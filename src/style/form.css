@@ -65,12 +65,6 @@ fieldset {
   margin: 0;
 }
 
-legend {
-  padding: 0;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
 .form-row {
    display: flex;
    justify-content: space-between;
@@ -109,6 +103,10 @@ input:-webkit-autofill:focus {
    right: 17.5%;
 }
 
+legend {
+   margin-bottom: 0.2rem;
+}
+
 .x-50 span, .radio-group span {
    color: var(--accent);
    display: contents;
@@ -116,6 +114,7 @@ input:-webkit-autofill:focus {
 
 .x-100 legend span {
    display: contents;
+   font-size: 1.2rem;
 }
 
 .get-in-touch {
@@ -415,7 +414,7 @@ form .close:focus {
       color: rgba(46, 46, 46, 0.45);
       text-align: left;
       left: 0.75em;
-      top: 3.5rem;
+      top: 2.8rem;
       line-height: 2rem;
       letter-spacing: -0.05rem;
    }
