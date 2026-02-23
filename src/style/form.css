@@ -109,13 +109,13 @@ input:-webkit-autofill:focus {
    right: 17.5%;
 }
 
-.contact-form span {
+.x-50 span, .radio-group span {
    color: var(--accent);
    display: contents;
 }
 
 .x-100 legend span {
-   color: var(--text);
+   display: contents;
 }
 
 .get-in-touch {
@@ -371,9 +371,6 @@ form .close:focus {
    }
    .form-row {
       display: block;
-   }
-   .contact-form span {
-      font-size: 1.2rem;
    }
 
    .col {
