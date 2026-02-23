@@ -22,11 +22,13 @@ form input[type="radio"] {
    background: var(--bg);
    box-shadow: inset 1px 1px 7px rgba(0, 0, 0, 0.75);
 }
+
 /* チェックされたらラジオボタン内側を表示 */
 form input[type="checkbox"]:checked::before,
 form input[type="radio"]:checked::before {
    opacity: 1;
 }
+
 form input[type="checkbox"]::before,
 form input[type="radio"]::before {
    content: "";
@@ -49,20 +51,20 @@ form input[type="radio"]::before {
 }
 
 .radio-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 1rem;
 }
 
 /* 1つ目（タイトル）を横幅いっぱいに */
-.radio-group > label:first-child {
-  grid-column: 1 / -1;
+.radio-group>label:first-child {
+   grid-column: 1 / -1;
 }
 
 fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
+   border: none;
+   padding: 0;
+   margin: 0;
 }
 
 .form-row {
@@ -103,11 +105,13 @@ input:-webkit-autofill:focus {
    right: 17.5%;
 }
 
-legend {
-   margin-bottom: 0.2rem;
+.form-field p {
+   margin-bottom: 1rem;
+   font-size: 2rem;
 }
 
-.x-50 span, .radio-group span {
+.x-50 span,
+.radio-group span {
    color: var(--accent);
    display: contents;
 }
@@ -153,10 +157,10 @@ legend {
    outline: none;
 }
 
-.input-text:focus + .label,
-.input-text.not-empty + .label {
-  transform: translateY(-2rem);
-  font-size: 1.2rem;
+.input-text:focus+.label,
+.input-text.not-empty+.label {
+   transform: translateY(-2rem);
+   font-size: 1.2rem;
 }
 
 .contact-form .label {
@@ -166,7 +170,8 @@ legend {
    color: rgba(10, 10, 10, 0.65);
    /*-webkit-text-stroke: 0.5px rgba(50, 50, 50, 0.5);*/
    position: absolute;
-   left: 1.4em;/*rem？*/
+   left: 1.4em;
+   /*rem？*/
    top: 0.5rem;
    pointer-events: none;
    transition:
@@ -293,6 +298,7 @@ form .close:focus {
       right: 0;
       top: 5%;
    }
+
    .contact-form .input-text {
       font-size: clamp(1.8rem, 1.343rem + 2.29vw, 2.2rem);
       width: 100%;
@@ -364,10 +370,12 @@ form .close:focus {
       gap: 0;
       grid-template-columns: none;
    }
+
    .radio-group label {
       font-size: 1.4rem;
       margin: 0.5rem 0;
    }
+
    .form-row {
       display: block;
    }
@@ -382,6 +390,10 @@ form .close:focus {
       padding: 0;
       margin: 0;
       margin-bottom: 1rem;
+   }
+
+   .form-field p {
+      margin-bottom: 0.2rem;
    }
 
    .contact-form {
@@ -450,6 +462,7 @@ form .close:focus {
       line-height: 1.2;
       text-align: left;
    }
+
    .align-center p a,
    .align-center p a::before,
    .align-center p a::after {
