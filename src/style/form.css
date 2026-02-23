@@ -46,7 +46,7 @@ form input[type="radio"]::before {
    height: 0.7em;
 }
 
-.radio-group label {
+.radio-group p {
    font-size: 1.8rem;
 }
 
@@ -57,7 +57,7 @@ form input[type="radio"]::before {
 }
 
 /* 1つ目（タイトル）を横幅いっぱいに */
-.radio-group>label:first-child {
+.radio-group>p:first-child {
    grid-column: 1 / -1;
 }
 
@@ -105,9 +105,20 @@ input:-webkit-autofill:focus {
    right: 17.5%;
 }
 
+/* form ttl */
 .form-field p {
    margin-bottom: 1rem;
    font-size: 2rem;
+}
+
+.section p::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: -3px;
+    width: 5vmin;
+    height: 1px;
+    border-top: 1px solid;
 }
 
 .x-50 span,
@@ -393,7 +404,17 @@ form .close:focus {
    }
 
    .form-field p {
-      margin-bottom: 0.2rem;
+      font-size: 14rem;
+      margin-bottom: 0;
+      width: 100%;
+      position: relative;
+   }
+
+   .x-100 span {
+      font-size: 12rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
    }
 
    .contact-form {
