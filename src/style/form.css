@@ -98,6 +98,16 @@ input:-webkit-autofill:focus {
    transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
+/*.pc .content-wrapper {
+   top: 0;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}*/
+
 .contact-form {
    width: calc(60% - 145px);
    position: absolute;
@@ -120,7 +130,7 @@ input:-webkit-autofill:focus {
    width: fit-content;
 }
 
-.section #section--second .align-center:last-child p {
+.section #section--second form .align-center:last-child p {
    font-size: 1.6rem;
 }
 
@@ -143,6 +153,7 @@ input:-webkit-autofill:focus {
 .x-100 span {
    display: contents;
    font-size: 1.2rem;
+   font-weight: 400;
 }
 
 .get-in-touch {
