@@ -116,7 +116,7 @@ input:-webkit-autofill:focus {
    display: contents;
 }
 
-.x-100 legend span {
+.x-100 span {
    display: contents;
    font-size: 1.2rem;
 }
@@ -426,7 +426,7 @@ form .close:focus {
       color: rgba(46, 46, 46, 0.45);
       text-align: left;
       left: 0.75em;
-      top: 2.8rem;
+      top: 3.8rem;
       line-height: 2rem;
       letter-spacing: -0.05rem;
    }
